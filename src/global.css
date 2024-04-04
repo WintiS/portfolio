@@ -3,6 +3,159 @@
  * View the full documentation at https://tailwindcss.com
  */
 @import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.sheet {
+  animation: sheetOpen 0.75s forwards cubic-bezier(0.6, 0.6, 0, 1);
+}
+
+.sheet::backdrop {
+  animation: sheetFadeIn 0.75s forwards cubic-bezier(0.6, 0.6, 0, 1);
+}
+
+.sheet.modal-closing {
+  animation: sheetClose 0.35s forwards cubic-bezier(0.6, 0.6, 0, 1);
+}
+
+.sheet.modal-closing::backdrop {
+  animation: sheetFadeOut 0.35s forwards cubic-bezier(0.6, 0.6, 0, 1);
+}
+.oneTwo {
+  animation: oneToTwo 0.75s forwards cubic-bezier(0.6, 0.6, 0, 1);
+}
+.twoThree {
+  animation: twoToThree 0.75s forwards cubic-bezier(0.6, 0.6, 0, 1);
+}
+.threeTwo {
+  animation: threeToTwo 0.75s forwards cubic-bezier(0.6, 0.6, 0, 1);
+}
+.twoOne {
+  animation: twoToOne 0.75s forwards cubic-bezier(0.6, 0.6, 0, 1);
+}
+.threeOne {
+  animation: threeToOne 0.75s forwards cubic-bezier(0.6, 0.6, 0, 1);
+}
+.oneThree {
+  animation: oneToThree 0.75s forwards cubic-bezier(0.6, 0.6, 0, 1);
+}
+.loading {
+  animation: load 1.5s forwards ease-in-out;
+}
+
+@keyframes sheetOpen {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes sheetClose {
+  from {
+    transform: translateX(0%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes sheetFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes sheetFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes oneToTwo {
+  from {
+    transform: translateX(0%);
+    width: 33%;
+  }
+  to {
+    transform: translateX(68%);
+    width: 50%;
+  }
+}
+@keyframes twoToThree {
+  0% {
+    transform: translateX(68%);
+    width: 50%;
+  }
+  30% {
+    transform: translateX(140%);
+    width: 30%;
+  }
+  100% {
+    transform: translateX(460%);
+    width: 18%;
+  }
+}
+
+@keyframes threeToTwo {
+  0% {
+    transform: translateX(460%);
+    width: 18%;
+  }
+  75% {
+    transform: translateX(120%);
+    width: 35%;
+  }
+  100% {
+    transform: translateX(68%);
+    width: 50%;
+  }
+}
+@keyframes twoToOne {
+  from {
+    transform: translateX(68%);
+    width: 50%;
+  }
+  to {
+    transform: translateX(0%);
+    width: 33%;
+  }
+}
+@keyframes threeToOne {
+  from {
+    transform: translateX(460%);
+    width: 18%;
+  }
+  to {
+    transform: translateX(0%);
+    width: 33%;
+  }
+}
+@keyframes oneToThree {
+  from {
+    transform: translateX(0%);
+    width: 33%;
+  }
+  to {
+    transform: translateX(460%);
+    width: 18%;
+  }
+}
+
+@keyframes load {
+  0% {
+    width: 2.5rem;
+  }
+  100% {
+    width: 14rem;
+  }
+}

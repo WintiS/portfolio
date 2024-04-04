@@ -8,10 +8,12 @@ export default {
         white: "#F7FFF9",
         seconadry: "#6A1F6A",
         primary: "#FF8400",
+        accent: "#A23405",
       },
 
       fontFamily: {
         display: ["Rubik", "Helvetica", "sans"],
+        pretty: ["Rock Salt", "Cursive", "sans"],
       },
       // https://uicolors.app/createł
       borderRadius: {
@@ -21,5 +23,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwind-hamburgers")],
 };
