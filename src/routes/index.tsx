@@ -8,6 +8,8 @@ import { Project } from "~/components/projects/project";
 import { LuArrowRight } from "@qwikest/icons/lucide";
 import { SvgWaveBottom } from "~/components/ui/svgwavebottom";
 import { Navigation } from "~/components/nav/navigation";
+import { Cell } from "~/components/projecttimeline/cell";
+import { BeutyInput } from "~/components/ui/input";
 
 export default component$(() => {
   const menustate = useSignal(false);
@@ -93,7 +95,7 @@ export default component$(() => {
   });
 
   return (
-    <div class={"pb-96 text-white"}>
+    <div class={"pb-16 text-white"}>
       <Navigation menustate={menustate} />
       <div class={"px-5 pt-10"}>
         <h1 class={"mb-8 text-7xl"}>
@@ -258,7 +260,7 @@ export default component$(() => {
           class={"h-64 w-full rounded-xl bg-[url('/mockuptda.jpeg')] bg-cover"}
         ></div>
       </div>
-      <div class={"px-5"}>
+      <div class={"mb-24 px-5"}>
         <div class={"mb-14 "}>
           <h1 class={"text-6xl tracking-wider"}>
             <span class={"text-primary"}>V</span>
@@ -299,6 +301,62 @@ export default component$(() => {
             <div class={"h-2 w-56 rounded bg-primary"}></div>
             <div class={"h-2 w-48 rounded bg-white"}></div>
           </div>
+        </div>
+      </div>
+      <div class={"mb-12 px-5"}>
+        <div class={"mb-8 text-xl"}>
+          <h4>Potřebné kroky k úspěšné webovce</h4>
+        </div>
+        <Cell />
+      </div>
+      <div class={"px-5"}>
+        <div class={"mb-8 px-5"}>
+          <h4 class={"text-2xl"}>
+            Zbýbá už jen {""}
+            <span class={"text-seconadry"}>jeden</span>
+            {""} krok
+          </h4>
+        </div>
+        <div
+          class={
+            "mb-6 flex flex-col gap-3 rounded-xl bg-seconadry px-5 pb-4 pt-5"
+          }
+        >
+          <BeutyInput
+            name="Jméno a Příjmení"
+            placeholder="Jan Novák"
+            type="text"
+          />
+          <BeutyInput type="email" name="Email:" placeholder="jmeno@firma.cz" />
+          <BeutyInput
+            type="tel"
+            name="Telefon:"
+            placeholder="+420 777 777 777"
+          />
+          <BeutyInput
+            name="Vaše cíle:"
+            placeholder="Vytvořit firemní identitu"
+            type="text"
+          />
+          <BeutyInput
+            name="Rozpočet:"
+            placeholder="Částka / ještě nevím"
+            type="number"
+          />
+
+          <div class={"mt-4 flex justify-center"}>
+            <button class={"flex items-center gap-5 text-xl"}>
+              <span>Odeslat</span>
+              <LuArrowRight class={"text-3xl text-background"} />
+            </button>
+          </div>
+        </div>
+
+        <div class={"px-0.5"}>
+          <p class={"text-sm"}>
+            Odpověď obdržíte <span class={"text-seconadry"}>do 24 hodin.</span>
+            Podrobně vám vysvětlím, jak vám ve vašem případě mohu pomoci.
+          </p>
         </div>
       </div>
 

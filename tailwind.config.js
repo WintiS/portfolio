@@ -16,12 +16,7 @@ export default {
         pretty: ["Rock Salt", "Cursive", "sans"],
       },
       // https://uicolors.app/createł
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
-      },
     },
   },
-  plugins: [require("tailwind-hamburgers")],
+  plugins: [require("tailwind-hamburgers"), require("@tailwindcss/forms")],
 };

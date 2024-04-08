@@ -15,7 +15,7 @@ export const Navigation = component$((props: Props) => {
           width={70}
           height={70}
         />
-        <div class={"-translate-x-4 translate-y-2"}>
+        <div class={"-translate-x-4 translate-y-2 md:translate-y-0"}>
           <span class={"text-primary"}>V</span>
           ítězsla
           <span class={"text-primary"}>v</span>
@@ -26,6 +26,7 @@ export const Navigation = component$((props: Props) => {
           onClick$={() => {
             menustate.value = !menustate.value;
           }}
+          class={"md:hidden"}
         >
           <div
             class={`tham ${menustate.value ? "tham-active" : ""} tham-e-squeeze tham-w-10`}
@@ -34,6 +35,24 @@ export const Navigation = component$((props: Props) => {
               <div class="tham-inner bg-white" />
             </div>
           </div>
+        </div>
+        <div>
+          <nav class={"flex gap-6 text-sm"}>
+            <ul>
+              <a href="#">Služby</a>
+            </ul>
+            <ul>
+              <a href="#">Portfolio</a>
+            </ul>
+            <ul>
+              <a href="#">O mně</a>
+            </ul>
+            <ul>
+              <a href="#" class={"rounded bg-seconadry px-4 py-3"}>
+                Kontaktujte mě
+              </a>
+            </ul>
+          </nav>
         </div>
       </div>
     </div>
