@@ -1,4 +1,4 @@
-import { $, component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
+import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { HeaderButton } from "~/components/ui/headerbutton";
 import { Modal } from "@qwik-ui/headless";
@@ -10,21 +10,15 @@ import { SvgWaveBottom } from "~/components/ui/svgwavebottom";
 import { Navigation } from "~/components/nav/navigation";
 import { Cell } from "~/components/projecttimeline/cell";
 import { BeutyInput } from "~/components/ui/input";
+import ImgSapiens from "./public/sapiensCropped.png?jsx";
+import { SvgImagePC } from "~/components/ui/svgimagepc";
+import { PostaranoTwo } from "~/components/ui/postaranotwo";
+import { PostranaOne } from "~/components/ui/postaranoone";
+import { Collumn } from "~/components/ui/collumn";
 
 export default component$(() => {
   const menustate = useSignal(false);
   const isVisible = useSignal("w-10");
-
-  const currentnavstate = useSignal(1);
-  const nextnavstate = useSignal(1);
-  const navclass = useSignal("");
-
-  const text1 = useSignal("text-primary");
-  const text2 = useSignal("text-white");
-  const text3 = useSignal("text-white");
-  const p1 = useSignal("");
-  const p2 = useSignal("hidden");
-  const p3 = useSignal("hidden");
 
   const outputRef = useSignal<Element>();
   // eslint-disable-next-line qwik/no-use-visible-task
@@ -41,84 +35,47 @@ export default component$(() => {
     { strategy: "intersection-observer" },
   );
 
-  const menuFunction = $((position: number) => {
-    currentnavstate.value = nextnavstate.value;
-    nextnavstate.value = position;
-
-    if (nextnavstate.value == 1) {
-      text2.value = "text-white transition-colors delay-150";
-      text1.value = "text-primary transition-colors delay-150";
-      text3.value = "text-white transition-colors delay-150";
-
-      p1.value = "";
-      p2.value = "hidden";
-      p3.value = "hidden";
-    } else if (nextnavstate.value == 2) {
-      text2.value = "text-primary transition-colors delay-150";
-      text1.value = "text-white transition-colors delay-150";
-      text3.value = "text-white transition-colors delay-150";
-
-      p1.value = "hidden";
-      p2.value = "";
-      p3.value = "hidden";
-    } else if (nextnavstate.value == 3) {
-      text2.value = "text-white transition-colors delay-150";
-      text1.value = "text-white transition-colors delay-150";
-      text3.value = "text-primary transition-colors delay-150";
-
-      p1.value = "hidden";
-      p2.value = "hidden";
-      p3.value = "";
-    }
-
-    if (currentnavstate.value == 1) {
-      if (nextnavstate.value == 2) {
-        navclass.value = "oneTwo";
-      } else if (nextnavstate.value == 3) {
-        navclass.value = "oneThree";
-      } else if (nextnavstate.value == 1) {
-        navclass.value = "";
-      }
-    } else if (currentnavstate.value == 2) {
-      if (nextnavstate.value == 3) {
-        navclass.value = "twoThree";
-      } else if (nextnavstate.value == 1) {
-        navclass.value = "twoOne";
-      }
-    } else if (currentnavstate.value == 3) {
-      if (nextnavstate.value == 2) {
-        navclass.value = "threeTwo";
-      } else if (nextnavstate.value == 1) {
-        navclass.value = "threeOne";
-      }
-    }
-  });
-
   return (
     <div class={"pb-16 text-white"}>
       <Navigation menustate={menustate} />
-      <div class={"px-5 pt-10"}>
-        <h1 class={"mb-8 text-7xl"}>
-          Efektivní řešení <br /> pro váš <br /> nový
-          <p
-            class={
-              "ml-1 inline-block bg-gradient-to-r from-primary to-[#FF0094] bg-clip-text pb-4 pt-2 font-pretty text-6xl text-transparent"
-            }
-          >
-            Web
-          </p>
-        </h1>
-        <div class={"mb-44"}>
-          <HeaderButton />
+      <div class={"flex px-5 md:mb-20 md:px-12 md:pt-16 xl:mb-32"}>
+        <div class={"md:pt-6 xl:pl-[12vw]"}>
+          <h1 class={"mb-8 text-7xl md:mb-14"}>
+            Efektivní řešení <br /> pro váš <br /> nový
+            <p
+              class={
+                "ml-1 inline-block bg-gradient-to-r from-primary to-[#FF0094] bg-clip-text pb-4 pt-2 font-pretty text-6xl text-transparent md:ml-4"
+              }
+            >
+              Web
+            </p>
+          </h1>
+          <div class={"mb-44"}>
+            <HeaderButton />
+          </div>
+        </div>
+        <div class={"absolute right-10 hidden md:block"}>
+          <ImgSapiens
+            class={"-scale-x-100 md:w-96 lg:w-[460px] xl:w-[500px] "}
+          />
         </div>
       </div>
 
-      <div class={"px-5"}>
-        <div class={"mb-5 rounded px-8 py-3 text-center text-2xl"}>
+      <div class={"px-5 md:px-12"}>
+        <div class={"mb-5 rounded px-8 py-3 text-center text-2xl md:mb-0"}>
           <span class={""}>Proč wevobá stránka?</span>
         </div>
         <div class={"mb-14"}>
-          <SvgImage />
+          <div class={"sm:hidden"}>
+            <SvgImage />
+          </div>
+          <div
+            class={
+              "hidden w-screen scale-75 items-center justify-center sm:flex "
+            }
+          >
+            <SvgImagePC />
+          </div>
         </div>
       </div>
       <div class={"mb-10 rounded px-5 text-center text-2xl"}>
@@ -126,61 +83,15 @@ export default component$(() => {
           Se mnou máte o vše <span class={"text-primary"}>postaráno</span>
         </span>
       </div>
-      <div class={"mb-12 px-5"}>
-        <div class={"mb-4"}>
-          <div class={"flex justify-around"}>
-            <button class={text1} onClick$={() => menuFunction(1)}>
-              Tvorba webu
-            </button>
-            <button class={text2} onClick$={() => menuFunction(2)}>
-              Údžba a bezpečnost
-            </button>
-            <button class={text3} onClick$={() => menuFunction(3)}>
-              SEO
-            </button>
-          </div>
-          <div class={"mt-1"}>
-            <div class={"h-[1px] w-full bg-white"}></div>
-            <div class={"-translate-y-px overflow-hidden"}>
-              <div
-                class={`${navclass.value ? navclass.value : "w-1/3"} h-[1px] bg-primary`}
-              ></div>
-            </div>
-          </div>
+      <div class={"mb-12 px-5 md:px-12"}>
+        <div class={"md:hidden"}>
+          <PostranaOne />
         </div>
-        <div class={"h-56 text-sm"}>
-          <p class={p1.value}>
-            Při naší spolupráci vám poskytnu osobní péči a individuální přístup,
-            který bude odpovídat vašim potřebám a cílům. Bez ohledu na to, zda
-            potřebujete osobní portfólio, firemní webové stránky nebo e-shop,
-            mohu vám pomoci vytvořit web, který vás reprezentuje online a pomůže
-            vám dosáhnout úspěchu. Kontaktujte mě ještě dnes a společně začneme
-            pracovat na vašem úspěšném projektu!
-          </p>
-          <p class={p2.value}>
-            Váš web je vaší digitální vizitkou, a je důležité zajistit jeho
-            bezpečnost a správnou funkčnost. Nabízím služby údržby a zabezpečení
-            webu, které vám pomohou udržet váš online prostor v bezpečí a v
-            optimálním stavu. S pravidelnými aktualizacemi softwaru,
-            monitorováním bezpečnostních hrozeb se postarám o to, aby váš web
-            fungoval bezproblémově a byl chráněn před potenciálními útoky.
-            Nechte mě starat se o technické detaily, abyste se mohli plně
-            soustředit na své podnikání. Kontaktujte mě a já vám rád vše
-            přiblížím.
-          </p>
-          <p class={p3.value}>
-            Chcete, aby váš web byl snadno nalezen ve výsledcích vyhledávání a
-            přilákal více návštěvníků? S pomocí SEO optimalizace mohu zlepšit
-            viditelnost vašeho webu a pomoci vám dosáhnout vyšších pozic ve
-            vyhledávačích. Od analýzy klíčových slov po optimalizaci obsahu a
-            technických prvků webu se postarám o to, aby váš web byl
-            optimalizován pro vyhledávací algoritmy a přilákal relevantní
-            návštěvníky. Kontaktujte mě a já vám rád přiblížím, jak mohu zvýšit
-            viditelnost vašeho webu a přinést vám více organického provozu.
-          </p>
+        <div class={"hidden md:block"}>
+          <PostaranoTwo />
         </div>
       </div>
-      <div class={"mb-32 flex items-center justify-center"}>
+      <div class={"mb-32 flex items-center justify-center md:mb-[24vw]"}>
         <svg
           width="295"
           height="118"
@@ -198,7 +109,7 @@ export default component$(() => {
         <a
           href="#"
           class={
-            "absolute flex items-center gap-1 rounded-[7px] bg-primary px-6 py-3"
+            "absolute flex items-center gap-1 rounded-[7px] bg-primary px-6 py-3 md:transition-transform md:hover:translate-x-2"
           }
         >
           Kontaktujte mě <LuArrowRight />
@@ -208,9 +119,14 @@ export default component$(() => {
         <div class={"flex items-center justify-center"}>
           <SvgWaveTop />
         </div>
-        <div class={"mt-[70px] w-full bg-accent px-5 pb-10 pt-5"} id="projects">
+        <div
+          class={
+            "z-10 mt-[70px] w-full bg-accent px-5 pb-10 pt-5 md:mt-[20vw]  md:px-20 lg:px-28 xl:px-36"
+          }
+          id="projects"
+        >
           <div class={"mb-14 "}>
-            <h1 class={"text-6xl tracking-wider"}>
+            <h1 class={"text-6xl tracking-wider md:hidden"}>
               <span class={"text-primary"}>V</span>
               ítězsla
               <span class={"text-primary"}>v</span>
@@ -220,8 +136,29 @@ export default component$(() => {
                 <h2 class={"ml-4 text-2xl tracking-tighter"}>Mé projekty</h2>
               </div>
             </h1>
+            <div class={"hidden items-center justify-between md:flex"}>
+              <h2
+                class={"hidden px-4 text-4xl tracking-tighter md:inline-block"}
+              >
+                Projekty, na kterých jsem pracoval
+              </h2>
+              <h1 class={" px-4 text-6xl tracking-wider"}>
+                <span class={"text-primary"}>V</span>
+                ítězsla
+                <span class={"text-primary"}>v </span>
+                Ším
+                <span class={"text-primary"}>a</span>
+              </h1>
+              <h2 class={"ml-4 px-4 text-4xl tracking-tighter md:hidden"}>
+                Mé projekty
+              </h2>
+            </div>
           </div>
-          <div class={"mt-12 flex -translate-y-8 flex-col items-center"}>
+          <div
+            class={
+              "mt-12  flex -translate-y-8 flex-col items-center   md:mt-16"
+            }
+          >
             <Project
               bgimgurl="/tda.png"
               name="Teacher Digital Agency"
@@ -242,25 +179,42 @@ export default component$(() => {
             />
           </div>
         </div>
-        <div class={"-translate-y-32"}>
+        <div class={"z-0 mb-6 -translate-y-4 md:mb-12 md:-translate-y-12"}>
           <SvgWaveBottom />
         </div>
       </div>
-      <div class={"w-full -translate-y-32 px-5"}>
-        <div class={"mb-4"}>
-          <h4 class={"mb-2 text-2xl"}>
-            Návrh webu <span class={"text-primary"}>zdarma</span>
-          </h4>
-          <p>
-            Pokud nebudete s mým designem zcela spokojeni, nedostanu od vás ani
-            korunu. Předem nic neplatíte.
-          </p>
+      <div class={"flex  items-center justify-center "}>
+        <div class={" px-5 md:flex md:w-2/3  md:gap-16 md:px-0"}>
+          <div
+            class={
+              "hidden aspect-[3/4] h-96 rounded-xl bg-[url('/mockuptda.jpeg')] bg-cover bg-center md:block"
+            }
+          ></div>
+          <div class={"mb-4 md:mt-10"}>
+            <h4 class={"mb-2 text-2xl md:mb-6 md:text-3xl"}>
+              Návrh webu <span class={"text-primary"}>zdarma</span>
+            </h4>
+            <p class={"mb-4 md:text-lg"}>
+              Pokud nebudete s mým designem zcela spokojeni, nedostanu od vás
+              ani korunu. Předem nic neplatíte.
+            </p>
+            <a
+              href="#"
+              class={
+                "absolute flex items-center gap-1 rounded-[7px] bg-primary px-6 py-3 md:transition-transform md:hover:translate-x-2"
+              }
+            >
+              Kontaktujte mě <LuArrowRight />
+            </a>
+          </div>
+          <div
+            class={
+              "h-64 w-full rounded-xl bg-[url('/mockuptda.jpeg')] bg-cover md:hidden"
+            }
+          ></div>
         </div>
-        <div
-          class={"h-64 w-full rounded-xl bg-[url('/mockuptda.jpeg')] bg-cover"}
-        ></div>
       </div>
-      <div class={"mb-24 px-5"}>
+      <div class={"mb-24 px-5 md:hidden"}>
         <div class={"mb-14 "}>
           <h1 class={"text-6xl tracking-wider"}>
             <span class={"text-primary"}>V</span>
@@ -303,7 +257,30 @@ export default component$(() => {
           </div>
         </div>
       </div>
-      <div class={"mb-12 px-5"}>
+      <div class={"w-screen"}>
+        <div class={"flex justify-around"}>
+          <div class={""}></div>
+          <div>
+            <div class={"text-sm"}>
+              <button class={"mb-1 mr-3 rounded-[8px] border px-2 py-1"}>
+                O mně
+              </button>
+              <button class={"rounded-[8px] bg-primary px-2 py-1"}>
+                Tech stack
+              </button>
+            </div>
+            <div class={"flex w-[70vw]"}>
+              <Collumn />
+              <Collumn />
+              <Collumn />
+              <Collumn />
+              <Collumn />
+              <Collumn />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class={"mb-12 px-5 md:hidden"}>
         <div class={"mb-8 text-xl"}>
           <h4>Potřebné kroky k úspěšné webovce</h4>
         </div>

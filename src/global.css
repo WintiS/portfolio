@@ -23,26 +23,67 @@
 .sheet.modal-closing::backdrop {
   animation: sheetFadeOut 0.35s forwards cubic-bezier(0.6, 0.6, 0, 1);
 }
+
 .oneTwo {
   animation: oneToTwo 0.75s forwards cubic-bezier(0.6, 0.6, 0, 1);
+}
+.oneTwoPC {
+  animation: oneToTwoPC 0.5s forwards cubic-bezier(0.6, 0.6, 0, 1);
 }
 .twoThree {
   animation: twoToThree 0.75s forwards cubic-bezier(0.6, 0.6, 0, 1);
 }
+.twoThreePC {
+  animation: twoToThreePC 0.5s forwards cubic-bezier(0.6, 0.6, 0, 1);
+}
 .threeTwo {
   animation: threeToTwo 0.75s forwards cubic-bezier(0.6, 0.6, 0, 1);
+}
+.threeTwoPC {
+  animation: threeToTwoPC 0.5s forwards cubic-bezier(0.6, 0.6, 0, 1);
 }
 .twoOne {
   animation: twoToOne 0.75s forwards cubic-bezier(0.6, 0.6, 0, 1);
 }
+.twoOnePC {
+  animation: twoToOnePC 0.5s forwards cubic-bezier(0.6, 0.6, 0, 1);
+}
 .threeOne {
   animation: threeToOne 0.75s forwards cubic-bezier(0.6, 0.6, 0, 1);
+}
+.threeOnePC {
+  animation: threeToOnePC 0.5s forwards cubic-bezier(0.6, 0.6, 0, 1);
 }
 .oneThree {
   animation: oneToThree 0.75s forwards cubic-bezier(0.6, 0.6, 0, 1);
 }
+.oneThreePC {
+  animation: oneToThreePC 0.5s forwards cubic-bezier(0.6, 0.6, 0, 1);
+}
+
 .loading {
   animation: load 1.5s forwards ease-in-out;
+}
+
+.slidein300: {
+  animation: fadein 1.5s forwards ease-in-out;
+}
+
+.slidein500: {
+  animation: slidein 500ms forwards ease;
+}
+
+.slidein700: {
+  animation: slidein 700ms forwards ease;
+}
+
+@keyframes fadein {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
 @keyframes sheetOpen {
@@ -91,6 +132,14 @@
     width: 50%;
   }
 }
+@keyframes oneToTwoPC {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
 @keyframes twoToThree {
   0% {
     transform: translateX(68%);
@@ -103,6 +152,15 @@
   100% {
     transform: translateX(460%);
     width: 18%;
+  }
+}
+@keyframes twoToThreePC {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(200%);
   }
 }
 
@@ -120,6 +178,15 @@
     width: 50%;
   }
 }
+@keyframes threeToTwoPC {
+  0% {
+    transform: translateY(200%);
+  }
+
+  100% {
+    transform: translateY(100%);
+  }
+}
 @keyframes twoToOne {
   from {
     transform: translateX(68%);
@@ -128,6 +195,15 @@
   to {
     transform: translateX(0%);
     width: 33%;
+  }
+}
+@keyframes twoToOnePC {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(0%);
   }
 }
 @keyframes threeToOne {
@@ -140,6 +216,15 @@
     width: 33%;
   }
 }
+@keyframes threeToOnePC {
+  0% {
+    transform: translateY(200%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
 @keyframes oneToThree {
   from {
     transform: translateX(0%);
@@ -150,6 +235,15 @@
     width: 18%;
   }
 }
+@keyframes oneToThreePC {
+  0% {
+    transform: translateY(0%);
+  }
+
+  100% {
+    transform: translateY(200%);
+  }
+}
 
 @keyframes load {
   0% {
@@ -157,5 +251,17 @@
   }
   100% {
     width: 14rem;
+  }
+}
+
+@keyframes slidein: {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

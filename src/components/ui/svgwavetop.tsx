@@ -6,7 +6,7 @@ export const SvgWaveTop = component$(() => {
       <div class={"absolute"}>
         <svg
           width="100vw"
-          height="338"
+          height="50vw"
           viewBox="0 0 1278 338"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -23,7 +23,7 @@ export const SvgWaveTop = component$(() => {
       <div class={"absolute"}>
         <svg
           width="100vw"
-          height="521"
+          height="50vw"
           viewBox="0 0 1278 521"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

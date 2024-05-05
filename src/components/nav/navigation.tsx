@@ -1,21 +1,26 @@
-import { type Signal, component$, useSignal } from "@builder.io/qwik";
+import { type Signal, component$ } from "@builder.io/qwik";
+import { Link } from "@builder.io/qwik-city";
+import Wintis from "./public/wintis.svg?jsx";
 
 interface Props {
   menustate: Signal<boolean>;
 }
 export const Navigation = component$((props: Props) => {
   const menustate = props.menustate;
+  const underlineClass =
+    "relative cursor-pointer transition-all ease-in-out before:absolute before:bottom-0 before:left-[50%] before:h-[2px] before:w-0 before:origin-center before:bg-seconadry before:transition-[width] before:duration-500 before:ease-in-out after:absolute after:bottom-0 after:right-[50%] after:h-[2px] after:w-0 after:origin-center after:bg-seconadry after:transition-[width] after:duration-500 after:ease-in-out hover:before:w-[50%] hover:after:w-[50%]";
 
   return (
-    <div class={" h-[9vh] bg-background"}>
+    <div class={" h-[9vh] bg-background md:py-2"}>
       <div class={"flex items-center justify-around"}>
-        <img
-          src="https://i.ibb.co/kJxTYHM/wintis-logo-removebg.png"
-          alt="logo-wintis"
-          width={70}
-          height={70}
-        />
-        <div class={"-translate-x-4 translate-y-2 md:translate-y-0"}>
+        <Link href="#">
+          <Wintis class={"h-20 w-20"} />
+        </Link>
+        <div
+          class={
+            "-translate-x-4 translate-y-2 md:-translate-x-20 md:translate-y-0 "
+          }
+        >
           <span class={"text-primary"}>V</span>
           ítězsla
           <span class={"text-primary"}>v</span>
@@ -36,19 +41,30 @@ export const Navigation = component$((props: Props) => {
             </div>
           </div>
         </div>
-        <div>
+        <div class={"hidden md:block"}>
           <nav class={"flex gap-6 text-sm"}>
             <ul>
-              <a href="#">Služby</a>
+              <a href="#" class={underlineClass}>
+                Služby
+              </a>
             </ul>
             <ul>
-              <a href="#">Portfolio</a>
+              <a href="#" class={underlineClass}>
+                Portfolio
+              </a>
             </ul>
             <ul>
-              <a href="#">O mně</a>
+              <a href="#" class={underlineClass}>
+                O mně
+              </a>
             </ul>
             <ul>
-              <a href="#" class={"rounded bg-seconadry px-4 py-3"}>
+              <a
+                href="#"
+                class={
+                  "rounded bg-seconadry px-6 py-3 transition-all duration-200 hover:bg-[#5D165D]"
+                }
+              >
                 Kontaktujte mě
               </a>
             </ul>
