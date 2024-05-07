@@ -38,8 +38,8 @@ export default component$(() => {
   return (
     <div class={"pb-16 text-white"}>
       <Navigation menustate={menustate} />
-      <div class={"flex px-5 pt-12 md:mb-20 md:px-12 md:pt-16 xl:mb-32"}>
-        <div class={"md:pt-6 xl:pl-[12vw]"}>
+      <div class={"flex px-5 pt-12 md:mb-20 md:px-12 md:pt-32 xl:mb-32"}>
+        <div class={"md:pt-6 lg:pl-[12vw]"}>
           <h1 class={"mb-12 text-3xl md:mb-14"}>
             <p
               class={
@@ -54,7 +54,11 @@ export default component$(() => {
             <HeaderButton />
           </div>
         </div>
-        <div class={"absolute right-10 hidden md:block"}>
+        <div
+          class={
+            "absolute right-0 hidden -translate-y-10 lg:block xl:right-[10vw]"
+          }
+        >
           <ImgSapiens
             class={"-scale-x-100 md:w-96 lg:w-[460px] xl:w-[500px] "}
           />
@@ -224,12 +228,9 @@ export default component$(() => {
               Ším
               <span class={"text-primary"}>a</span>
               <div class={"ml-3 -translate-y-2 text-sm"}>
-                <button class={"mb-1 mr-3 rounded-[8px] px-2 py-1"}>
-                  O mně
-                </button>
-                <button class={"rounded-[8px] bg-primary px-2 py-1"}>
+                <strong class={"rounded-md bg-primary px-2 py-1"}>
                   Tech stack
-                </button>
+                </strong>
               </div>
             </div>
           </h1>
@@ -256,35 +257,62 @@ export default component$(() => {
             <div class={"h-2 w-48 rounded bg-white"}></div>
           </div>
         </div>
-      </div>
-      <div class={"mt-24 hidden w-screen pr-24 md:block"}>
-        <div class={"flex justify-center"}>
-          <div class={"sticky bottom-1 flex -rotate-90 items-center"}>
-            <h1 class={"text-4xl tracking-wider xl:text-5xl "}>
-              <span class={"text-primary"}>V</span>
-              ítězsla
-              <span class={"text-primary"}>v</span> Ším
-              <span class={"text-primary"}>a</span>
-            </h1>
+        <div class={"mt-10"}>
+          <div class={"mb-3"}>
+            <strong class={"rounded-md bg-primary px-2 py-1 text-white"}>
+              O mně
+            </strong>
           </div>
-          <div>
+          <p>
+            Jmenuji se Vítězslav Šíma a jsem front-end developer. Web design mě
+            naplňuje již od mých 13 let, kdy jsem poprvé naprogramoval svoji
+            první webovku. Kromě mé vášně pro kódování mám také zálibu ve street
+            workoutu a wingfoilingu, které mi pomáhají udržet si tzv.{" "}
+            <strong class={"text-primary"}>work-life balance</strong>.
+          </p>
+          <br />
+          <p>
+            Svět digitálního designu a vývoje mě{" "}
+            <strong class={"text-primary"}>fascinuje</strong>. a já se neustále
+            snažím zdokonalovat. Mezi mé technické dovednosti patří práce s
+            platformami jako je Wordpress, Firebase, Shopify, tvorba designů v
+            Figmě, a samozřejmě ovládání HTML, CSS a JavaScriptu. Kromě toho
+            používám různé frameworky, včetně QWIK.js, který mi umožňuje rychle
+            a efektivně vyvíjet{" "}
+            <strong class={"text-primary"}>interaktivní</strong> webové stránky.
+          </p>
+          <br />
+          <p>
+            Jsem nadšený tím, co dělám, a rád bych vám pomohl přinést vaše
+            online projekty k životu. Pojďme společně vytvořit webové stránky,
+            které budou nejen vizuálně atraktivní, ale také efektivní.{" "}
+            <strong class={"text-primary"}>
+              Budu se těšit na spolupráci s vámi!
+            </strong>
+          </p>
+        </div>
+      </div>
+      <div
+        class={
+          "mb-32 mt-32 hidden w-screen md:flex md:items-center md:justify-start"
+        }
+      >
+        <h1
+          class={
+            "sticky left-0 top-[60vh] -translate-y-40 -rotate-90 text-5xl tracking-wider lg:text-6xl"
+          }
+        >
+          <span class={"text-primary"}>V</span>
+          ítězsla
+          <span class={"text-primary"}>v</span> Ším
+          <span class={"text-primary"}>a</span>
+        </h1>
+        <div class={""}>
+          <div class={"mb-12"}>
             <div class={""}>
-              <button
-                class={
-                  "mb-1 mr-3 rounded-lg px-3 py-2  transition-colors hover:border-primary hover:bg-primary"
-                }
-              >
-                O mně
-              </button>
-              <button
-                class={
-                  "rounded-lg bg-primary px-3 py-2 transition-colors hover:border-primary hover:bg-primary active:bg-primary"
-                }
-              >
-                Tech stack
-              </button>
+              <strong class={"px-3 text-primary"}>Tech stack</strong>
             </div>
-            <div class={"flex items-baseline"}>
+            <div class={"flex items-baseline overflow-hidden"}>
               <Collumn
                 text="QWIK.js"
                 colorclass="bg-white"
@@ -313,6 +341,39 @@ export default component$(() => {
               />
             </div>
           </div>
+          <div class={"lg:max-w-[50vw]"}>
+            <div class={"mb-6"}>
+              <strong class={"px-3 text-primary"}>O mně</strong>
+            </div>
+            <p>
+              Jmenuji se Vítězslav Šíma a jsem front-end developer. Web design
+              mě naplňuje již od mých 13 let, kdy jsem poprvé naprogramoval
+              svoji první webovku. Kromě mé vášně pro kódování mám také zálibu
+              ve street workoutu a wingfoilingu, které mi pomáhají udržet si
+              tzv. <strong class={"text-primary"}>work-life balance</strong>.
+            </p>
+            <br />
+            <p>
+              Svět digitálního designu a vývoje mě{" "}
+              <strong class={"text-primary"}>fascinuje</strong>. a já se
+              neustále snažím zdokonalovat. Mezi mé technické dovednosti patří
+              práce s platformami jako je Wordpress, Firebase, Shopify, tvorba
+              designů v Figmě, a samozřejmě ovládání HTML, CSS a JavaScriptu.
+              Kromě toho používám různé frameworky, včetně QWIK.js, který mi
+              umožňuje rychle a efektivně vyvíjet{" "}
+              <strong class={"text-primary"}>interaktivní</strong> webové
+              stránky.
+            </p>
+            <br />
+            <p>
+              Jsem nadšený tím, co dělám, a rád bych vám pomohl přinést vaše
+              online projekty k životu. Pojďme společně vytvořit webové stránky,
+              které budou nejen vizuálně atraktivní, ale také efektivní.{" "}
+              <strong class={"text-primary"}>
+                Budu se těšit na spolupráci s vámi!
+              </strong>
+            </p>
+          </div>
         </div>
       </div>
       <div class={"mb-12 px-5 md:hidden"}>
@@ -321,12 +382,12 @@ export default component$(() => {
         </div>
         <Cell />
       </div>
-      <div class={"px-5"}>
-        <div class={"mb-8 px-5"}>
+      <div class={"px-5 md:px-24"}>
+        <div class={"mb-8 px-5 md:flex md:justify-center"}>
           <h4 class={"text-2xl"}>
             Zbýbá už jen {""}
             <span class={"rounded bg-seconadry px-2 py-1"}>jeden</span>
-            {""} krok
+            {""} krok - napište mi!
           </h4>
         </div>
         <div
@@ -346,8 +407,8 @@ export default component$(() => {
             placeholder="+420 777 777 777"
           />
           <BeutyInput
-            name="Vaše cíle:"
-            placeholder="Vytvořit firemní identitu"
+            name="Na čem chcete spolupracovat:"
+            placeholder="Vytvořit firemní prezenční web"
             type="text"
           />
           <BeutyInput
@@ -357,14 +418,18 @@ export default component$(() => {
           />
 
           <div class={"mt-4 flex justify-center"}>
-            <button class={"flex items-center gap-5 text-xl"}>
+            <button
+              class={
+                "flex justify-center gap-5 text-xl transition-transform md:hover:translate-x-2"
+              }
+            >
               <span>Odeslat</span>
               <LuArrowRight class={"text-3xl text-background"} />
             </button>
           </div>
         </div>
 
-        <div class={"px-0.5"}>
+        <div class={"px-0.5 md:flex md:justify-center"}>
           <p class={"text-sm"}>
             Odpověď obdržíte <span class={"text-seconadry"}>do 24 hodin.</span>
             Podrobně vám vysvětlím, jak vám ve vašem případě mohu pomoci.
