@@ -8,7 +8,7 @@ interface Props {
 export const Navigation = component$((props: Props) => {
   const menustate = props.menustate;
   const underlineClass =
-    "relative cursor-pointer transition-all ease-in-out before:absolute before:bottom-0 before:left-[50%] before:h-[2px] before:w-0 before:origin-center before:bg-seconadry before:transition-[width] before:duration-500 before:ease-in-out after:absolute after:bottom-0 after:right-[50%] after:h-[2px] after:w-0 after:origin-center after:bg-seconadry after:transition-[width] after:duration-500 after:ease-in-out hover:before:w-[50%] hover:after:w-[50%]";
+    "relative cursor-pointer transition-all ease-in-out before:absolute before:bottom-0 before:left-[50%] before:h-[2px] before:w-0 before:origin-center before:bg-primary before:transition-[width] before:duration-500 before:ease-in-out after:absolute after:bottom-0 after:right-[50%] after:h-[2px] after:w-0 after:origin-center after:bg-primary after:transition-[width] after:duration-500 after:ease-in-out hover:before:w-[50%] hover:after:w-[50%]";
 
   return (
     <div class={" h-[9vh] bg-background md:py-2"}>
@@ -18,7 +18,7 @@ export const Navigation = component$((props: Props) => {
         </Link>
         <div
           class={
-            "-translate-x-4 translate-y-2 md:-translate-x-20 md:translate-y-0 "
+            "-translate-x-4 translate-y-2 text-lg md:-translate-x-20 md:translate-y-0"
           }
         >
           <span class={"text-primary"}>V</span>
@@ -62,7 +62,7 @@ export const Navigation = component$((props: Props) => {
               <a
                 href="#"
                 class={
-                  "rounded bg-seconadry px-6 py-3 transition-all duration-200 hover:bg-[#5D165D]"
+                  "cursor-pointer rounded bg-seconadry px-6 py-3 transition-all duration-200 hover:bg-primary"
                 }
               >
                 Kontaktujte mě

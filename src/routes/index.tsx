@@ -38,17 +38,17 @@ export default component$(() => {
   return (
     <div class={"pb-16 text-white"}>
       <Navigation menustate={menustate} />
-      <div class={"flex px-5 md:mb-20 md:px-12 md:pt-16 xl:mb-32"}>
+      <div class={"flex px-5 pt-12 md:mb-20 md:px-12 md:pt-16 xl:mb-32"}>
         <div class={"md:pt-6 xl:pl-[12vw]"}>
-          <h1 class={"mb-8 text-7xl md:mb-14"}>
-            Efektivní řešení <br /> pro váš <br /> nový
+          <h1 class={"mb-12 text-3xl md:mb-14"}>
             <p
               class={
-                "ml-1 inline-block bg-gradient-to-r from-primary to-[#FF0094] bg-clip-text pb-4 pt-2 font-pretty text-6xl text-transparent md:ml-4"
+                "inline-block bg-gradient-to-r from-primary to-[#FF0094] bg-clip-text pb-4 pt-3 font-pretty text-5xl text-transparent"
               }
             >
-              Web
+              Frontend developer
             </p>
+            <p class={"text-lg"}>Žiju pro kreativní projekty.</p>
           </h1>
           <div class={"mb-44"}>
             <HeaderButton />
@@ -63,7 +63,7 @@ export default component$(() => {
 
       <div class={"px-5 md:px-12"}>
         <div class={"mb-5 rounded px-8 py-3 text-center text-2xl md:mb-0"}>
-          <span class={""}>Proč wevobá stránka?</span>
+          <span class={""}>Proč mít webovou stránku?</span>
         </div>
         <div class={"mb-14"}>
           <div class={"sm:hidden"}>
@@ -183,7 +183,7 @@ export default component$(() => {
           <SvgWaveBottom />
         </div>
       </div>
-      <div class={"flex  items-center justify-center "}>
+      <div class={"mb-24  flex items-center justify-center md:mb-0"}>
         <div class={" px-5 md:flex md:w-2/3  md:gap-16 md:px-0"}>
           <div
             class={
@@ -209,7 +209,7 @@ export default component$(() => {
           </div>
           <div
             class={
-              "h-64 w-full rounded-xl bg-[url('/mockuptda.jpeg')] bg-cover md:hidden"
+              "mt-24 h-64 w-full rounded-xl bg-[url('/mockuptda.jpeg')] bg-cover md:hidden"
             }
           ></div>
         </div>
@@ -224,7 +224,7 @@ export default component$(() => {
               Ším
               <span class={"text-primary"}>a</span>
               <div class={"ml-3 -translate-y-2 text-sm"}>
-                <button class={"mb-1 mr-3 rounded-[8px] border px-2 py-1"}>
+                <button class={"mb-1 mr-3 rounded-[8px] px-2 py-1"}>
                   O mně
                 </button>
                 <button class={"rounded-[8px] bg-primary px-2 py-1"}>
@@ -257,25 +257,60 @@ export default component$(() => {
           </div>
         </div>
       </div>
-      <div class={"w-screen"}>
-        <div class={"flex justify-around"}>
-          <div class={""}></div>
+      <div class={"mt-24 hidden w-screen pr-24 md:block"}>
+        <div class={"flex justify-center"}>
+          <div class={"sticky bottom-1 flex -rotate-90 items-center"}>
+            <h1 class={"text-4xl tracking-wider xl:text-5xl "}>
+              <span class={"text-primary"}>V</span>
+              ítězsla
+              <span class={"text-primary"}>v</span> Ším
+              <span class={"text-primary"}>a</span>
+            </h1>
+          </div>
           <div>
-            <div class={"text-sm"}>
-              <button class={"mb-1 mr-3 rounded-[8px] border px-2 py-1"}>
+            <div class={""}>
+              <button
+                class={
+                  "mb-1 mr-3 rounded-lg px-3 py-2  transition-colors hover:border-primary hover:bg-primary"
+                }
+              >
                 O mně
               </button>
-              <button class={"rounded-[8px] bg-primary px-2 py-1"}>
+              <button
+                class={
+                  "rounded-lg bg-primary px-3 py-2 transition-colors hover:border-primary hover:bg-primary active:bg-primary"
+                }
+              >
                 Tech stack
               </button>
             </div>
-            <div class={"flex w-[70vw]"}>
-              <Collumn />
-              <Collumn />
-              <Collumn />
-              <Collumn />
-              <Collumn />
-              <Collumn />
+            <div class={"flex items-baseline"}>
+              <Collumn
+                text="QWIK.js"
+                colorclass="bg-white"
+                heightclass="h-52"
+              />
+              <Collumn
+                text="WordPress"
+                colorclass="bg-primary"
+                heightclass="h-56"
+              />
+              <Collumn
+                text="Tailwind"
+                colorclass="bg-white"
+                heightclass="h-36"
+              />
+              <Collumn text="Figma" colorclass="bg-white" heightclass="h-44" />
+              <Collumn
+                text="HTML & CSS"
+                colorclass="bg-primary"
+                heightclass="h-80"
+              />
+              <Collumn
+                text="JavaScript"
+                colorclass="bg-white"
+                heightclass="h-64"
+              />
             </div>
           </div>
         </div>
@@ -290,7 +325,7 @@ export default component$(() => {
         <div class={"mb-8 px-5"}>
           <h4 class={"text-2xl"}>
             Zbýbá už jen {""}
-            <span class={"text-seconadry"}>jeden</span>
+            <span class={"rounded bg-seconadry px-2 py-1"}>jeden</span>
             {""} krok
           </h4>
         </div>
