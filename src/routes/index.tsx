@@ -1,4 +1,4 @@
-import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
+import { component$, useSignal, useVisibleTask$, $ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { HeaderButton } from "~/components/ui/headerbutton";
 import { Modal } from "@qwik-ui/headless";
@@ -15,12 +15,52 @@ import { SvgImagePC } from "~/components/ui/svgimagepc";
 import { PostaranoTwo } from "~/components/ui/postaranotwo";
 import { PostranaOne } from "~/components/ui/postaranoone";
 import { Collumn } from "~/components/ui/collumn";
+import * as v from "valibot";
+import { formAction$, useForm, valiForm$ } from "@modular-forms/qwik";
+
+export const formSchema = v.object({
+  fullname: v.string([v.minLength(2, "Zadejte vaše celé jméno")]),
+  mail: v.string([v.email("Špatně napsaný email.")]),
+  phone: v.string([
+    v.minLength(1, "Zadejte vaše telefonní číslo"),
+    v.minLength(8, "Zadejte platné telefonní číslo."),
+    v.maxLength(10, "Zadejte platné telefonní číslo."),
+  ]),
+  goal: v.string([v.minLength(1, "Zadejte, s čím potřebujete pomoci.")]),
+  budget: v.string([
+    v.minLength(1, "Sdělte mi prosím, zda máte již představu o vašem rozpočtu"),
+  ]),
+});
+
+type FormSchema = v.Input<typeof formSchema>;
 
 export default component$(() => {
+  const [formStore, { Field, Form }] = useForm<FormSchema>({
+    action: useFormAction(),
+    validate: valiForm$(formSchema),
+    loader: {
+      value: {
+        fullname: "",
+        mail: "",
+        phone: "",
+        goal: "",
+        budget: "",
+      },
+    },
+  });
+
   const menustate = useSignal(false);
   const isVisible = useSignal("w-10");
 
   const outputRef = useSignal<Element>();
+  const riseRef = useSignal<Element>();
+
+  const qwik = useSignal("h-4");
+  const word = useSignal("h-4");
+  const tailwind = useSignal("h-4");
+  const figma = useSignal("h-4");
+  const htmlcss = useSignal("h-4");
+  const js = useSignal("h-4");
   // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(
     () => {
@@ -30,6 +70,24 @@ export default component$(() => {
         }
       });
       observer.observe(outputRef.value!);
+      return () => observer.disconnect();
+    },
+    { strategy: "intersection-observer" },
+  );
+  // eslint-disable-next-line qwik/no-use-visible-task
+  useVisibleTask$(
+    () => {
+      const observer = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+          qwik.value = "h-52";
+          word.value = "h-56";
+          tailwind.value = "h-36";
+          figma.value = "h-44";
+          htmlcss.value = "h-80";
+          js.value = "h-72";
+        }
+      });
+      observer.observe(riseRef.value!);
       return () => observer.disconnect();
     },
     { strategy: "intersection-observer" },
@@ -188,7 +246,7 @@ export default component$(() => {
         </div>
       </div>
       <div class={"mb-24  flex items-center justify-center md:mb-0"}>
-        <div class={" px-5 md:flex md:w-2/3  md:gap-16 md:px-0"}>
+        <div class={" px-5 md:flex md:w-1/2  md:gap-16 md:px-0"}>
           <div
             class={
               "hidden aspect-[3/4] h-96 rounded-xl bg-[url('/mockuptda.jpeg')] bg-cover bg-center md:block"
@@ -292,87 +350,94 @@ export default component$(() => {
           </p>
         </div>
       </div>
-      <div
-        class={
-          "mb-32 mt-32 hidden w-screen md:flex md:items-center md:justify-start"
-        }
-      >
-        <h1
+      <div class={"flex justify-center"}>
+        <div
           class={
-            "sticky left-0 top-[60vh] -translate-y-40 -rotate-90 text-5xl tracking-wider lg:text-6xl"
+            "mb-32 mt-32 hidden w-screen max-w-[1400px] md:flex md:items-center md:justify-start"
           }
         >
-          <span class={"text-primary"}>V</span>
-          ítězsla
-          <span class={"text-primary"}>v</span> Ším
-          <span class={"text-primary"}>a</span>
-        </h1>
-        <div class={""}>
-          <div class={"mb-12"}>
-            <div class={""}>
-              <strong class={"px-3 text-primary"}>Tech stack</strong>
+          <h1
+            class={
+              "sticky left-0 top-[60vh] -translate-y-40 -rotate-90 text-5xl tracking-wider lg:text-6xl"
+            }
+          >
+            <span class={"text-primary"}>V</span>
+            ítězsla
+            <span class={"text-primary"}>v</span> Ším
+            <span class={"text-primary"}>a</span>
+          </h1>
+          <div class={""} ref={riseRef}>
+            <div class={"mb-12"}>
+              <div class={""}>
+                <strong class={"px-3 text-primary"}>Tech stack</strong>
+              </div>
+              <div class={"flex h-96 items-baseline overflow-hidden"}>
+                <Collumn
+                  text="QWIK.js"
+                  colorclass="bg-white"
+                  heightclass={qwik}
+                />
+                <Collumn
+                  text="WordPress"
+                  colorclass="bg-primary"
+                  heightclass={word}
+                />
+                <Collumn
+                  text="Tailwind"
+                  colorclass="bg-white"
+                  heightclass={tailwind}
+                />
+                <Collumn
+                  text="Figma"
+                  colorclass="bg-white"
+                  heightclass={figma}
+                />
+                <Collumn
+                  text="HTML & CSS"
+                  colorclass="bg-primary"
+                  heightclass={htmlcss}
+                />
+                <Collumn
+                  text="JavaScript"
+                  colorclass="bg-white"
+                  heightclass={js}
+                />
+              </div>
             </div>
-            <div class={"flex items-baseline overflow-hidden"}>
-              <Collumn
-                text="QWIK.js"
-                colorclass="bg-white"
-                heightclass="h-52"
-              />
-              <Collumn
-                text="WordPress"
-                colorclass="bg-primary"
-                heightclass="h-56"
-              />
-              <Collumn
-                text="Tailwind"
-                colorclass="bg-white"
-                heightclass="h-36"
-              />
-              <Collumn text="Figma" colorclass="bg-white" heightclass="h-44" />
-              <Collumn
-                text="HTML & CSS"
-                colorclass="bg-primary"
-                heightclass="h-80"
-              />
-              <Collumn
-                text="JavaScript"
-                colorclass="bg-white"
-                heightclass="h-64"
-              />
+            <div class={"lg:max-w-[50vw] xl:max-w-[40vw]"}>
+              <div class={"mb-6"}>
+                <strong class={"px-3 text-primary"}>O mně</strong>
+              </div>
+              <p>
+                Jmenuji se Vítězslav Šíma a jsem front-end developer. Web design
+                mě naplňuje již od mých 13 let, kdy jsem poprvé naprogramoval
+                svoji první webovku. Kromě mé vášně pro kódování mám také zálibu
+                ve street workoutu a wingfoilingu, které mi pomáhají udržet si
+                tzv. <strong class={"text-primary"}>work-life balance</strong>.
+              </p>
+              <br />
+              <p>
+                Svět digitálního designu a vývoje mě{" "}
+                <strong class={"text-primary"}>fascinuje</strong>. a já se
+                neustále snažím zdokonalovat. Mezi mé technické dovednosti patří
+                práce s platformami jako je Wordpress, Firebase, Shopify, tvorba
+                designů v Figmě, a samozřejmě ovládání HTML, CSS a JavaScriptu.
+                Kromě toho používám různé frameworky, včetně QWIK.js, který mi
+                umožňuje rychle a efektivně vyvíjet{" "}
+                <strong class={"text-primary"}>interaktivní</strong> webové
+                stránky.
+              </p>
+              <br />
+              <p>
+                Jsem nadšený tím, co dělám, a rád bych vám pomohl přinést vaše
+                online projekty k životu. Pojďme společně vytvořit webové
+                stránky, které budou nejen vizuálně atraktivní, ale také
+                efektivní.{" "}
+                <strong class={"text-primary"}>
+                  Budu se těšit na spolupráci s vámi!
+                </strong>
+              </p>
             </div>
-          </div>
-          <div class={"lg:max-w-[50vw]"}>
-            <div class={"mb-6"}>
-              <strong class={"px-3 text-primary"}>O mně</strong>
-            </div>
-            <p>
-              Jmenuji se Vítězslav Šíma a jsem front-end developer. Web design
-              mě naplňuje již od mých 13 let, kdy jsem poprvé naprogramoval
-              svoji první webovku. Kromě mé vášně pro kódování mám také zálibu
-              ve street workoutu a wingfoilingu, které mi pomáhají udržet si
-              tzv. <strong class={"text-primary"}>work-life balance</strong>.
-            </p>
-            <br />
-            <p>
-              Svět digitálního designu a vývoje mě{" "}
-              <strong class={"text-primary"}>fascinuje</strong>. a já se
-              neustále snažím zdokonalovat. Mezi mé technické dovednosti patří
-              práce s platformami jako je Wordpress, Firebase, Shopify, tvorba
-              designů v Figmě, a samozřejmě ovládání HTML, CSS a JavaScriptu.
-              Kromě toho používám různé frameworky, včetně QWIK.js, který mi
-              umožňuje rychle a efektivně vyvíjet{" "}
-              <strong class={"text-primary"}>interaktivní</strong> webové
-              stránky.
-            </p>
-            <br />
-            <p>
-              Jsem nadšený tím, co dělám, a rád bych vám pomohl přinést vaše
-              online projekty k životu. Pojďme společně vytvořit webové stránky,
-              které budou nejen vizuálně atraktivní, ale také efektivní.{" "}
-              <strong class={"text-primary"}>
-                Budu se těšit na spolupráci s vámi!
-              </strong>
-            </p>
           </div>
         </div>
       </div>
@@ -392,30 +457,53 @@ export default component$(() => {
         </div>
         <div
           class={
-            "mb-6 flex flex-col gap-3 rounded-xl bg-seconadry px-5 pb-4 pt-5"
+            "mb-6 flex flex-col gap-3 rounded-xl bg-seconadry px-5  pb-4 pt-5 md:py-8"
           }
         >
-          <BeutyInput
-            name="Jméno a Příjmení"
-            placeholder="Jan Novák"
-            type="text"
-          />
-          <BeutyInput type="email" name="Email:" placeholder="jmeno@firma.cz" />
-          <BeutyInput
-            type="tel"
-            name="Telefon:"
-            placeholder="+420 777 777 777"
-          />
-          <BeutyInput
-            name="Na čem chcete spolupracovat:"
-            placeholder="Vytvořit firemní prezenční web"
-            type="text"
-          />
-          <BeutyInput
-            name="Rozpočet:"
-            placeholder="Částka / ještě nevím"
-            type="number"
-          />
+          <Form onSubmit$={$(useFormAction)}>
+            <Field name="fullname" type="string">
+              {(store, props) => (
+                <BeutyInput placeholder="Jan Novák" type="text" {...props} />
+              )}
+            </Field>
+            <Field name="mail" type="string">
+              {(store, props) => (
+                <BeutyInput
+                  type="email"
+                  placeholder="jmeno@firma.cz"
+                  {...props}
+                />
+              )}
+            </Field>
+            <Field name="phone" type="string">
+              {(store, props) => (
+                <BeutyInput
+                  type="tel"
+                  placeholder="+420 777 777 777"
+                  {...props}
+                />
+              )}
+            </Field>
+            <Field name="goal" type="string">
+              {(store, props) => (
+                <BeutyInput
+                  placeholder="Vytvořit firemní prezenční web"
+                  type="text"
+                  {...props}
+                />
+              )}
+            </Field>
+            <Field name="budget" type="string">
+              {(store, props) => (
+                <BeutyInput
+                  placeholder="Částka / ještě nevím"
+                  type="string"
+                  {...props}
+                />
+              )}
+            </Field>
+            <input type="submit" value={"submit"} />
+          </Form>
 
           <div class={"mt-4 flex justify-center"}>
             <button
@@ -481,3 +569,10 @@ export const head: DocumentHead = {
     },
   ],
 };
+
+export const useFormAction = formAction$<FormSchema>((values) => {
+  console.log(values);
+  return {
+    status: "success",
+  };
+}, valiForm$(formSchema));
