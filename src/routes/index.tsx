@@ -9,7 +9,6 @@ import { LuArrowRight } from "@qwikest/icons/lucide";
 import { SvgWaveBottom } from "~/components/ui/svgwavebottom";
 import { Navigation } from "~/components/nav/navigation";
 import { Cell } from "~/components/projecttimeline/cell";
-import { BeutyInput } from "~/components/ui/input";
 import ImgSapiens from "./public/sapiensCropped.png?jsx";
 import { SvgImagePC } from "~/components/ui/svgimagepc";
 import { PostaranoTwo } from "~/components/ui/postaranotwo";
@@ -463,43 +462,123 @@ export default component$(() => {
           <Form onSubmit$={$(useFormAction)}>
             <Field name="fullname" type="string">
               {(store, props) => (
-                <BeutyInput placeholder="Jan Novák" type="text" {...props} />
+                <div class={""}>
+                  <label
+                    for={"name"}
+                    class={"block text-sm font-medium leading-6 text-white"}
+                  >
+                    {"Celé jméno"}
+                  </label>
+                  <div class={"mt-1"}>
+                    <input
+                      id={"name"}
+                      type={"text"}
+                      value={store.value}
+                      class={
+                        "block w-full rounded-lg border-0 bg-background py-2 text-white shadow-sm ring-1 ring-inset ring-background placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 md:py-4 md:text-lg"
+                      }
+                      placeholder={"Vašek Makovský..."}
+                      {...props}
+                    />
+                  </div>
+                </div>
               )}
             </Field>
             <Field name="mail" type="string">
               {(store, props) => (
-                <BeutyInput
-                  type="email"
-                  placeholder="jmeno@firma.cz"
-                  {...props}
-                />
+                <div class={"md:mt-4"}>
+                  <label
+                    for={"mail"}
+                    class={"block text-sm font-medium leading-6 text-white"}
+                  >
+                    {"E-mail"}
+                  </label>
+                  <div class={"mt-1"}>
+                    <input
+                      id={"mail"}
+                      type={"text"}
+                      value={store.value}
+                      class={
+                        "block w-full rounded-lg border-0 bg-background py-2 text-white shadow-sm ring-1 ring-inset ring-background placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 md:py-4 md:text-lg"
+                      }
+                      placeholder={"priklad@seznam.cz"}
+                      {...props}
+                    />
+                  </div>
+                </div>
               )}
             </Field>
             <Field name="phone" type="string">
               {(store, props) => (
-                <BeutyInput
-                  type="tel"
-                  placeholder="+420 777 777 777"
-                  {...props}
-                />
+                <div class={"md:mt-4"}>
+                  <label
+                    for={"phone"}
+                    class={"block text-sm font-medium leading-6 text-white"}
+                  >
+                    {"Telefon:"}
+                  </label>
+                  <div class={"mt-1"}>
+                    <input
+                      id={"phone"}
+                      type={"tel"}
+                      pattern={"[0-9]{3} ?[0-9]{3} ?[0-9]{3}"}
+                      value={store.value}
+                      class={
+                        "block w-full rounded-lg border-0 bg-background py-2 text-white shadow-sm ring-1 ring-inset ring-background placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 md:py-4 md:text-lg"
+                      }
+                      placeholder={"600 400 100"}
+                      {...props}
+                    />
+                  </div>
+                </div>
               )}
             </Field>
             <Field name="goal" type="string">
               {(store, props) => (
-                <BeutyInput
-                  placeholder="Vytvořit firemní prezenční web"
-                  type="text"
-                  {...props}
-                />
+                <div class={"md:mt-4"}>
+                  <label
+                    for={"goal"}
+                    class={"block text-sm font-medium leading-6 text-white"}
+                  >
+                    {"Cíl spolupráce"}
+                  </label>
+                  <div class={"mt-1"}>
+                    <input
+                      id={"goal"}
+                      type={"text"}
+                      value={store.value}
+                      class={
+                        "block w-full rounded-lg border-0 bg-background py-2 text-white shadow-sm ring-1 ring-inset ring-background placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 md:py-4 md:text-lg"
+                      }
+                      placeholder={"Vytvořit firemní web."}
+                      {...props}
+                    />
+                  </div>
+                </div>
               )}
             </Field>
             <Field name="budget" type="string">
               {(store, props) => (
-                <BeutyInput
-                  placeholder="Částka / ještě nevím"
-                  type="string"
-                  {...props}
-                />
+                <div class={"md:mt-4"}>
+                  <label
+                    for={"budget"}
+                    class={"block text-sm font-medium leading-6 text-white"}
+                  >
+                    {"Budget"}
+                  </label>
+                  <div class={"mt-1"}>
+                    <input
+                      id={"budget"}
+                      type={"text"}
+                      value={store.value}
+                      class={
+                        "block w-full rounded-lg border-0 bg-background py-2 text-white shadow-sm ring-1 ring-inset ring-background placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 md:py-4 md:text-lg"
+                      }
+                      placeholder={"Částka / ještě nemám představu."}
+                      {...props}
+                    />
+                  </div>
+                </div>
               )}
             </Field>
             <input type="submit" value={"submit"} />
