@@ -9,7 +9,7 @@ import { LuArrowRight } from "@qwikest/icons/lucide";
 import { SvgWaveBottom } from "~/components/ui/svgwavebottom";
 import { Navigation } from "~/components/nav/navigation";
 import { Cell } from "~/components/projecttimeline/cell";
-import ImgSapiens from "./public/sapiensCropped.png?jsx";
+import { Image } from "@unpic/qwik";
 import { SvgImagePC } from "~/components/ui/svgimagepc";
 import { PostaranoTwo } from "~/components/ui/postaranotwo";
 import { PostranaOne } from "~/components/ui/postaranoone";
@@ -23,9 +23,9 @@ export const formSchema = v.object({
   phone: v.string([
     v.minLength(1, "Zadejte vaše telefonní číslo"),
     v.minLength(8, "Zadejte platné telefonní číslo."),
-    v.maxLength(10, "Zadejte platné telefonní číslo."),
+    v.maxLength(14, "Zadejte platné telefonní číslo."),
   ]),
-  goal: v.string([v.minLength(1, "Zadejte, s čím potřebujete pomoci.")]),
+  goal: v.string([v.minLength(1, "Zadejte, s čím potřebujete pomoct.")]),
   budget: v.string([
     v.minLength(1, "Sdělte mi prosím, zda máte již představu o vašem rozpočtu"),
   ]),
@@ -64,8 +64,11 @@ export default component$(() => {
   useVisibleTask$(
     () => {
       const observer = new IntersectionObserver(([entry]) => {
-        if (entry.isIntersecting) {
+        const dothing = () => {
           isVisible.value = "loading";
+        };
+        if (entry.isIntersecting) {
+          setTimeout(dothing, 500);
         }
       });
       observer.observe(outputRef.value!);
@@ -95,30 +98,35 @@ export default component$(() => {
   return (
     <div class={"pb-16 text-white"}>
       <Navigation menustate={menustate} />
-      <div class={"flex px-5 pt-12 md:mb-20 md:px-12 md:pt-32 xl:mb-32"}>
-        <div class={"md:pt-6 lg:pl-[12vw]"}>
-          <h1 class={"mb-12 text-3xl md:mb-14"}>
-            <p
-              class={
-                "inline-block bg-gradient-to-r from-primary to-[#FF0094] bg-clip-text pb-4 pt-3 font-pretty text-5xl text-transparent"
-              }
-            >
-              Frontend developer
-            </p>
-            <p class={"text-lg"}>Žiju pro kreativní projekty.</p>
-          </h1>
-          <div class={"mb-44"}>
-            <HeaderButton />
-          </div>
-        </div>
+      <div class={"flex justify-center"}>
         <div
-          class={
-            "absolute right-0 hidden -translate-y-10 lg:block xl:right-[10vw]"
-          }
+          class={"flex w-3/4 justify-between pt-12 md:mb-20 md:pt-32 xl:mb-32"}
         >
-          <ImgSapiens
-            class={"-scale-x-100 md:w-96 lg:w-[460px] xl:w-[500px] "}
-          />
+          <div class={"md:pt-6 "}>
+            <h1 class={"mb-12 text-3xl md:mb-14"}>
+              <p
+                class={
+                  "inline-block bg-gradient-to-r from-primary to-[#FF0094] bg-clip-text pb-4 pt-3 font-pretty text-5xl text-transparent"
+                }
+              >
+                Frontend developer
+              </p>
+              <p class={"text-lg"}>Žiju pro kreativní projekty.</p>
+            </h1>
+            <div class={"mb-44"}>
+              <HeaderButton />
+            </div>
+          </div>
+          <div class={" hidden lg:block "}>
+            <Image
+              class={"-scale-x-100"}
+              src="sapiensCropped.png"
+              layout="fullWidth"
+              width={400}
+              height={500}
+              alt="A lovely bath"
+            />
+          </div>
         </div>
       </div>
 
@@ -465,7 +473,7 @@ export default component$(() => {
                 <div class={""}>
                   <label
                     for={"name"}
-                    class={"block text-sm font-medium leading-6 text-white"}
+                    class={"block font-medium leading-6 text-white"}
                   >
                     {"Celé jméno"}
                   </label>
@@ -481,12 +489,15 @@ export default component$(() => {
                       {...props}
                     />
                   </div>
+                  <div class={"mt-1"}>
+                    <p class={"ml-1 text-sm text-white"}>{store.error}</p>
+                  </div>
                 </div>
               )}
             </Field>
             <Field name="mail" type="string">
               {(store, props) => (
-                <div class={"md:mt-4"}>
+                <div class={"mt-2 md:mt-4"}>
                   <label
                     for={"mail"}
                     class={"block text-sm font-medium leading-6 text-white"}
@@ -505,12 +516,15 @@ export default component$(() => {
                       {...props}
                     />
                   </div>
+                  <div class={"mt-1"}>
+                    <p class={"ml-1 text-sm text-white"}>{store.error}</p>
+                  </div>
                 </div>
               )}
             </Field>
             <Field name="phone" type="string">
               {(store, props) => (
-                <div class={"md:mt-4"}>
+                <div class={"mt-2 md:mt-4"}>
                   <label
                     for={"phone"}
                     class={"block text-sm font-medium leading-6 text-white"}
@@ -530,12 +544,15 @@ export default component$(() => {
                       {...props}
                     />
                   </div>
+                  <div class={"mt-1"}>
+                    <p class={"ml-1 text-sm text-white"}>{store.error}</p>
+                  </div>
                 </div>
               )}
             </Field>
             <Field name="goal" type="string">
               {(store, props) => (
-                <div class={"md:mt-4"}>
+                <div class={"mt-2 md:mt-4"}>
                   <label
                     for={"goal"}
                     class={"block text-sm font-medium leading-6 text-white"}
@@ -554,12 +571,15 @@ export default component$(() => {
                       {...props}
                     />
                   </div>
+                  <div class={"mt-1"}>
+                    <p class={"ml-1 text-sm text-white"}>{store.error}</p>
+                  </div>
                 </div>
               )}
             </Field>
             <Field name="budget" type="string">
               {(store, props) => (
-                <div class={"md:mt-4"}>
+                <div class={"mt-2 md:mt-4"}>
                   <label
                     for={"budget"}
                     class={"block text-sm font-medium leading-6 text-white"}
@@ -578,22 +598,29 @@ export default component$(() => {
                       {...props}
                     />
                   </div>
+                  <div class={"mt-1"}>
+                    <p class={"ml-1 text-sm text-white"}>{store.error}</p>
+                  </div>
                 </div>
               )}
             </Field>
-            <input type="submit" value={"submit"} />
+            <div class={"flex justify-center"}>
+              <div
+                class={
+                  "mt-4 flex justify-center transition-transform md:mt-8 md:hover:translate-x-1"
+                }
+              >
+                <input
+                  type="submit"
+                  value={"Odeslat"}
+                  class={
+                    "flex justify-center gap-5 text-xl hover:cursor-pointer "
+                  }
+                ></input>
+                <LuArrowRight class={"text-3xl text-background"} />
+              </div>
+            </div>
           </Form>
-
-          <div class={"mt-4 flex justify-center"}>
-            <button
-              class={
-                "flex justify-center gap-5 text-xl transition-transform md:hover:translate-x-2"
-              }
-            >
-              <span>Odeslat</span>
-              <LuArrowRight class={"text-3xl text-background"} />
-            </button>
-          </div>
         </div>
 
         <div class={"px-0.5 md:flex md:justify-center"}>

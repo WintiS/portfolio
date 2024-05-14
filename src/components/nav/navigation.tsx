@@ -1,6 +1,6 @@
 import { type Signal, component$ } from "@builder.io/qwik";
 import { Link } from "@builder.io/qwik-city";
-import Wintis from "./public/wintis.svg?jsx";
+import { Image } from "@unpic/qwik";
 
 interface Props {
   menustate: Signal<boolean>;
@@ -14,7 +14,13 @@ export const Navigation = component$((props: Props) => {
     <div class={" h-[9vh] bg-background md:py-2"}>
       <div class={"flex items-center justify-around"}>
         <Link href="#">
-          <Wintis class={"h-20 w-20"} />
+          <Image
+            src="wintis.svg"
+            layout="fixed"
+            width={60}
+            height={60}
+            alt="A lovely bath"
+          />
         </Link>
         <div
           class={

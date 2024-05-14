@@ -62,7 +62,7 @@
 }
 
 .loading {
-  animation: load 1.5s forwards ease-in-out;
+  animation: load 2s forwards ease-in-out;
 }
 
 .slidein300: {
