@@ -1,5 +1,11 @@
-import { component$, useSignal, useVisibleTask$, $ } from "@builder.io/qwik";
-import type { DocumentHead } from "@builder.io/qwik-city";
+import {
+  component$,
+  useSignal,
+  useVisibleTask$,
+  $,
+  useTask$,
+} from "@builder.io/qwik";
+import { DocumentHead, server$ } from "@builder.io/qwik-city";
 import { HeaderButton } from "~/components/ui/headerbutton";
 import { Modal } from "@qwik-ui/headless";
 import { SvgImage } from "~/components/ui/svgimage";
@@ -15,7 +21,10 @@ import { PostaranoTwo } from "~/components/ui/postaranotwo";
 import { PostranaOne } from "~/components/ui/postaranoone";
 import { Collumn } from "~/components/ui/collumn";
 import * as v from "valibot";
-import { formAction$, useForm, valiForm$ } from "@modular-forms/qwik";
+import { formAction$, reset, useForm, valiForm$ } from "@modular-forms/qwik";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../firebaseConfig";
+import { transporter } from "~/components/mailer";
 
 export const formSchema = v.object({
   fullname: v.string([v.minLength(2, "Zadejte vaše celé jméno")]),
@@ -37,6 +46,7 @@ export default component$(() => {
   const [formStore, { Field, Form }] = useForm<FormSchema>({
     action: useFormAction(),
     validate: valiForm$(formSchema),
+    validateOn: "submit",
     loader: {
       value: {
         fullname: "",
@@ -46,6 +56,14 @@ export default component$(() => {
         budget: "",
       },
     },
+  });
+
+  useTask$(({ track }) => {
+    track(() => formStore.response.status);
+    console.log(formStore);
+    if (formStore.response.status === "success") {
+      reset(formStore);
+    }
   });
 
   const menustate = useSignal(false);
@@ -253,7 +271,7 @@ export default component$(() => {
         </div>
       </div>
       <div class={"mb-24  flex items-center justify-center md:mb-0"}>
-        <div class={" px-5 md:flex md:w-1/2  md:gap-16 md:px-0"}>
+        <div class={" px-5 md:flex md:w-2/3 md:gap-16  md:px-0 lg:w-1/2"}>
           <div
             class={
               "hidden aspect-[3/4] h-96 rounded-xl bg-[url('/mockuptda.jpeg')] bg-cover bg-center md:block"
@@ -467,7 +485,7 @@ export default component$(() => {
             "mb-6 flex flex-col gap-3 rounded-xl bg-seconadry px-5  pb-4 pt-5 md:py-8"
           }
         >
-          <Form onSubmit$={$(useFormAction)}>
+          <Form>
             <Field name="fullname" type="string">
               {(store, props) => (
                 <div class={""}>
@@ -610,13 +628,15 @@ export default component$(() => {
                   "mt-4 flex justify-center transition-transform md:mt-8 md:hover:translate-x-1"
                 }
               >
-                <input
+                <button
                   type="submit"
                   value={"Odeslat"}
                   class={
                     "flex justify-center gap-5 text-xl hover:cursor-pointer "
                   }
-                ></input>
+                >
+                  Odeslat
+                </button>
                 <LuArrowRight class={"text-3xl text-background"} />
               </div>
             </div>
@@ -676,8 +696,27 @@ export const head: DocumentHead = {
   ],
 };
 
-export const useFormAction = formAction$<FormSchema>((values) => {
+export const useFormAction = formAction$<FormSchema>(async (values) => {
   console.log(values);
+  addDoc(collection(db, "form"), {
+    fullname: values.fullname,
+    email: values.mail,
+    phone: values.phone,
+    goal: values.goal,
+    budget: values.budget,
+  });
+  const mailOptions = {
+    from: "baksus466@gmail.com",
+    to: "kviteksima@seznam.cz",
+    subject: `Nové vyplnění formuláře od>>> ${values.fullname}`,
+    text: `Jméno: ${values.fullname}, email: ${values.mail}, telefon: ${values.phone}, cíl: ${values.goal}, rozpočet: ${values.budget}`,
+  };
+  try {
+    console.log(await transporter.sendMail(mailOptions));
+  } catch (error) {
+    console.log(error);
+  }
+
   return {
     status: "success",
   };
