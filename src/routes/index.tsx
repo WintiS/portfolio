@@ -2,16 +2,15 @@ import {
   component$,
   useSignal,
   useVisibleTask$,
-  $,
   useTask$,
 } from "@builder.io/qwik";
-import { DocumentHead, server$ } from "@builder.io/qwik-city";
+import type { DocumentHead } from "@builder.io/qwik-city";
 import { HeaderButton } from "~/components/ui/headerbutton";
 import { Modal } from "@qwik-ui/headless";
 import { SvgImage } from "~/components/ui/svgimage";
 import { SvgWaveTop } from "~/components/ui/svgwavetop";
 import { Project } from "~/components/projects/project";
-import { LuArrowRight } from "@qwikest/icons/lucide";
+import { LuArrowRight, LuLoader2 } from "@qwikest/icons/lucide";
 import { SvgWaveBottom } from "~/components/ui/svgwavebottom";
 import { Navigation } from "~/components/nav/navigation";
 import { Cell } from "~/components/projecttimeline/cell";
@@ -25,6 +24,7 @@ import { formAction$, reset, useForm, valiForm$ } from "@modular-forms/qwik";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 import { transporter } from "~/components/mailer";
+import { htmlemailstructure } from "~/components/email/email";
 
 export const formSchema = v.object({
   fullname: v.string([v.minLength(2, "Zadejte vaše celé jméno")]),
@@ -57,15 +57,6 @@ export default component$(() => {
       },
     },
   });
-
-  useTask$(({ track }) => {
-    track(() => formStore.response.status);
-    console.log(formStore);
-    if (formStore.response.status === "success") {
-      reset(formStore);
-    }
-  });
-
   const menustate = useSignal(false);
   const isVisible = useSignal("w-10");
 
@@ -78,6 +69,15 @@ export default component$(() => {
   const figma = useSignal("h-4");
   const htmlcss = useSignal("h-4");
   const js = useSignal("h-4");
+  const isSubmitted = useSignal(false);
+  useTask$(({ track }) => {
+    track(() => formStore.response.status);
+    if (formStore.response.status === "success") {
+      reset(formStore, ["fullname", "mail", "phone", "goal", "budget"]);
+      isSubmitted.value = !isSubmitted.value;
+    }
+  });
+
   // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(
     () => {
@@ -508,7 +508,7 @@ export default component$(() => {
                     />
                   </div>
                   <div class={"mt-1"}>
-                    <p class={"ml-1 text-sm text-white"}>{store.error}</p>
+                    <p class={"ml-1 text-sm text-primary  "}>{store.error}</p>
                   </div>
                 </div>
               )}
@@ -535,7 +535,7 @@ export default component$(() => {
                     />
                   </div>
                   <div class={"mt-1"}>
-                    <p class={"ml-1 text-sm text-white"}>{store.error}</p>
+                    <p class={"ml-1 text-sm text-primary"}>{store.error}</p>
                   </div>
                 </div>
               )}
@@ -563,7 +563,7 @@ export default component$(() => {
                     />
                   </div>
                   <div class={"mt-1"}>
-                    <p class={"ml-1 text-sm text-white"}>{store.error}</p>
+                    <p class={"ml-1 text-sm text-primary"}>{store.error}</p>
                   </div>
                 </div>
               )}
@@ -590,7 +590,7 @@ export default component$(() => {
                     />
                   </div>
                   <div class={"mt-1"}>
-                    <p class={"ml-1 text-sm text-white"}>{store.error}</p>
+                    <p class={"ml-1 text-sm text-primary"}>{store.error}</p>
                   </div>
                 </div>
               )}
@@ -617,7 +617,7 @@ export default component$(() => {
                     />
                   </div>
                   <div class={"mt-1"}>
-                    <p class={"ml-1 text-sm text-white"}>{store.error}</p>
+                    <p class={"ml-1 text-sm text-primary"}>{store.error}</p>
                   </div>
                 </div>
               )}
@@ -635,9 +635,29 @@ export default component$(() => {
                     "flex justify-center gap-5 text-xl hover:cursor-pointer "
                   }
                 >
-                  Odeslat
+                  {(!formStore.submitted || !formStore.submitting) &&
+                    !isSubmitted.value && (
+                      <span class={"flex items-center"}>
+                        <span>Odeslat</span>
+                        <LuArrowRight class={"text-3xl text-primary"} />
+                      </span>
+                    )}
+                  {formStore.submitting && (
+                    <span>
+                      <LuLoader2 class={"animate-spin text-3xl"} />
+                    </span>
+                  )}
                 </button>
-                <LuArrowRight class={"text-3xl text-background"} />
+
+                {isSubmitted.value && (
+                  <div class={"flex flex-col items-center justify-center"}>
+                    <span class={"text-lg"}>Odesláno!</span>
+                    <span class={"text-center text-sm"}>
+                      Email o potvrzení odeslání formuláře Vám prřijde do pár
+                      sekund na mail.
+                    </span>
+                  </div>
+                )}
               </div>
             </div>
           </Form>
@@ -705,14 +725,25 @@ export const useFormAction = formAction$<FormSchema>(async (values) => {
     goal: values.goal,
     budget: values.budget,
   });
+  const mailOptionsCustomer = {
+    from: "noreply.simavitezslav@gmail.com",
+    to: values.mail,
+    subject: `Vyplnění formuláře - ${values.fullname}`,
+    html: htmlemailstructure,
+  };
   const mailOptions = {
-    from: "baksus466@gmail.com",
+    from: "noreply.simavitezslav@gmail.com",
     to: "kviteksima@seznam.cz",
     subject: `Nové vyplnění formuláře od>>> ${values.fullname}`,
-    text: `Jméno: ${values.fullname}, email: ${values.mail}, telefon: ${values.phone}, cíl: ${values.goal}, rozpočet: ${values.budget}`,
+    text: `Jméno: ${values.fullname},
+    email: ${values.mail},
+    telefon: ${values.phone},
+    cíl: ${values.goal},
+    rozpočet: ${values.budget}`,
   };
   try {
     console.log(await transporter.sendMail(mailOptions));
+    console.log(await transporter.sendMail(mailOptionsCustomer));
   } catch (error) {
     console.log(error);
   }
