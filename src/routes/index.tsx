@@ -3,6 +3,7 @@ import {
   useSignal,
   useVisibleTask$,
   useTask$,
+  $,
 } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { HeaderButton } from "~/components/ui/headerbutton";
@@ -69,7 +70,44 @@ export default component$(() => {
   const figma = useSignal("h-4");
   const htmlcss = useSignal("h-4");
   const js = useSignal("h-4");
+
+  const currentSentence = useSignal("");
+  const sentenceIndex = useSignal(0);
+  const charIndex = useSignal(0);
+  const theSentence = useSignal("");
+  const sentences = [
+    "Nabízím kompletní tvorbu webu od A do Z. Bussines weby, portfolia, webové aplikace, eshopy.",
+  ];
+
   const isSubmitted = useSignal(false);
+
+  const typeChar = $(() => {
+    if (sentenceIndex.value < sentences.length) {
+      if (charIndex.value < sentences[sentenceIndex.value].length) {
+        currentSentence.value +=
+          sentences[sentenceIndex.value][charIndex.value];
+        charIndex.value++;
+      } else {
+        sentenceIndex.value++;
+        charIndex.value = 0;
+        if (sentenceIndex.value < sentences.length) {
+          currentSentence.value += "\n";
+        }
+      }
+      theSentence.value = currentSentence.value;
+    } else {
+      // Reset to start typing again from the beginning
+      // currentSentence.value = "";
+      // sentenceIndex.value = 0;
+      // charIndex.value = 0;
+    }
+  });
+
+  // eslint-disable-next-line qwik/no-use-visible-task
+  useVisibleTask$(() => {
+    setInterval(typeChar, 50); // Adjust typing speed here
+  });
+
   useTask$(({ track }) => {
     track(() => formStore.response.status);
     if (formStore.response.status === "success") {
@@ -86,7 +124,7 @@ export default component$(() => {
           isVisible.value = "loading";
         };
         if (entry.isIntersecting) {
-          setTimeout(dothing, 500);
+          setTimeout(dothing, 50);
         }
       });
       observer.observe(outputRef.value!);
@@ -129,21 +167,28 @@ export default component$(() => {
               >
                 Frontend developer
               </p>
-              <p class={"text-lg"}>Žiju pro kreativní projekty.</p>
+              <p class={"text-lg"}>{theSentence.value}|</p>
             </h1>
             <div class={"mb-44"}>
               <HeaderButton />
             </div>
           </div>
+
           <div class={" hidden lg:block "}>
-            <Image
-              class={"-scale-x-100"}
-              src="sapiensCropped.png"
-              layout="fullWidth"
-              width={400}
-              height={500}
-              alt="A lovely bath"
-            />
+            <script
+              type="module"
+              src="https://unpkg.com/@splinetool/viewer@1.6.8/build/spline-viewer.js"
+            ></script>
+            <div class={"h-96 w-[50vw]"}>
+              <script
+                type="module"
+                src="https://unpkg.com/@splinetool/viewer/build/spline-viewer.js"
+              ></script>
+              <spline-viewer
+                url="https://prod.spline.design/PBQQBw8bfXDhBo7w/scene.splinecode"
+                events-target="local"
+              ></spline-viewer>
+            </div>
           </div>
         </div>
       </div>
@@ -165,7 +210,7 @@ export default component$(() => {
           </div>
         </div>
       </div>
-      <div class={"mb-10 rounded px-5 text-center text-2xl"}>
+      <div class={"mb-10 rounded px-5 text-center text-2xl"} id={"services"}>
         <span>
           Se mnou máte o vše <span class={"text-primary"}>postaráno</span>
         </span>
@@ -194,7 +239,7 @@ export default component$(() => {
           />
         </svg>
         <a
-          href="#"
+          href="#form"
           class={
             "absolute flex items-center gap-1 rounded-[7px] bg-primary px-6 py-3 md:transition-transform md:hover:translate-x-2"
           }
@@ -286,7 +331,7 @@ export default component$(() => {
               ani korunu. Předem nic neplatíte.
             </p>
             <a
-              href="#"
+              href="#form"
               class={
                 "absolute flex items-center gap-1 rounded-[7px] bg-primary px-6 py-3 md:transition-transform md:hover:translate-x-2"
               }
@@ -301,7 +346,8 @@ export default component$(() => {
           ></div>
         </div>
       </div>
-      <div class={"mb-24 px-5 md:hidden"}>
+      <div class={"mb-24 px-5 md:hidden"} id="aboutme">
+        z
         <div class={"mb-14 "}>
           <h1 class={"text-6xl tracking-wider"}>
             <span class={"text-primary"}>V</span>
@@ -375,7 +421,7 @@ export default component$(() => {
           </p>
         </div>
       </div>
-      <div class={"flex justify-center"}>
+      <div class={"flex justify-center"} id="about">
         <div
           class={
             "mb-32 mt-32 hidden w-screen max-w-[1400px] md:flex md:items-center md:justify-start"
@@ -472,7 +518,7 @@ export default component$(() => {
         </div>
         <Cell />
       </div>
-      <div class={"px-5 md:px-24"}>
+      <div class={"px-5 md:px-24"} id="form">
         <div class={"mb-8 px-5 md:flex md:justify-center"}>
           <h4 class={"text-2xl"}>
             Zbýbá už jen {""}
@@ -686,16 +732,16 @@ export default component$(() => {
             }
           >
             <ul>
-              <a href="#">Služby</a>
+              <a href="#services">Služby</a>
             </ul>
             <ul>
-              <a href="#">Portfolio</a>
+              <a href="#projects">Portfolio</a>
             </ul>
             <ul>
-              <a href="#">O mně</a>
+              <a href="#aboutme">O mně</a>
             </ul>
             <ul>
-              <a href="#" class={"rounded bg-seconadry px-4 py-3"}>
+              <a href="#form" class={"rounded bg-seconadry px-4 py-3"}>
                 Kontaktujte mě
               </a>
             </ul>
