@@ -13,7 +13,7 @@ export const Project = component$((props: Props) => {
   return (
     <div
       class={
-        "mt-5 h-44 w-full overflow-hidden rounded-xl md:mt-12 md:h-[24vw] "
+        "project mt-5 h-44 w-full overflow-hidden rounded-xl md:mt-12 md:h-[24vw] "
       }
     >
       <Link

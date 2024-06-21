@@ -14,8 +14,6 @@ import { Project } from "~/components/projects/project";
 import { LuArrowRight, LuLoader2 } from "@qwikest/icons/lucide";
 import { SvgWaveBottom } from "~/components/ui/svgwavebottom";
 import { Navigation } from "~/components/nav/navigation";
-import { Cell } from "~/components/projecttimeline/cell";
-import { Image } from "@unpic/qwik";
 import { SvgImagePC } from "~/components/ui/svgimagepc";
 import { PostaranoTwo } from "~/components/ui/postaranotwo";
 import { PostranaOne } from "~/components/ui/postaranoone";
@@ -76,7 +74,7 @@ export default component$(() => {
   const charIndex = useSignal(0);
   const theSentence = useSignal("");
   const sentences = [
-    "Nabízím kompletní tvorbu webu od A do Z. Bussines weby, portfolia, webové aplikace, eshopy.",
+    "Nabízím kompletní tvorbu webu od A do Z. Business weby, portfolia, webové aplikace, eshopy.",
   ];
 
   const isSubmitted = useSignal(false);
@@ -105,7 +103,7 @@ export default component$(() => {
 
   // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(() => {
-    setInterval(typeChar, 50); // Adjust typing speed here
+    setInterval(typeChar, 40); // Adjust typing speed here
   });
 
   useTask$(({ track }) => {
@@ -292,11 +290,12 @@ export default component$(() => {
             }
           >
             <Project
-              bgimgurl="/tda.png"
-              name="Teacher Digital Agency"
-              documentationhref="/portfolio/tda"
+              bgimgurl="/hanka.png"
+              name="Hanka Zlatníková"
+              documentationhref="/portfolio/hanka-zlatnikova"
               backgeoundpos="top"
             />
+
             <Project
               bgimgurl="/jjo.png"
               name="Jaroška Jídelna Online"
@@ -304,9 +303,9 @@ export default component$(() => {
               backgeoundpos="top"
             />
             <Project
-              bgimgurl="/hanka.png"
-              name="Hanka Zlatníková"
-              documentationhref="/portfolio/hanka-zlatnikova"
+              bgimgurl="/tda.png"
+              name="Teacher Digital Agency"
+              documentationhref="/portfolio/tda"
               backgeoundpos="top"
             />
           </div>
@@ -316,19 +315,16 @@ export default component$(() => {
         </div>
       </div>
       <div class={"mb-24  flex items-center justify-center md:mb-0"}>
-        <div class={" px-5 md:flex md:w-2/3 md:gap-16  md:px-0 lg:w-1/2"}>
-          <div
-            class={
-              "hidden aspect-[3/4] h-96 rounded-xl bg-[url('/mockuptda.jpeg')] bg-cover bg-center md:block"
-            }
-          ></div>
-          <div class={"mb-4 md:mt-10"}>
+        <div class={" px-5 md:flex md:w-3/4 md:gap-16  md:px-0 lg:w-2/3"}>
+          <div class={"mock"}>
+            <img src={"/macbookpromock.png"} width={2000} height={1000} />
+          </div>
+          <div class={"mb-4 md:mt-10 md:w-[100vw]"}>
             <h4 class={"mb-2 text-2xl md:mb-6 md:text-3xl"}>
               Návrh webu <span class={"text-primary"}>zdarma</span>
             </h4>
             <p class={"mb-4 md:text-lg"}>
-              Pokud nebudete s mým designem zcela spokojeni, nedostanu od vás
-              ani korunu. Předem nic neplatíte.
+              Kompletí návrh webu máte zdarma. Bez výsledků nic neplatíte.
             </p>
             <a
               href="#form"
@@ -339,15 +335,9 @@ export default component$(() => {
               Kontaktujte mě <LuArrowRight />
             </a>
           </div>
-          <div
-            class={
-              "mt-24 h-64 w-full rounded-xl bg-[url('/mockuptda.jpeg')] bg-cover md:hidden"
-            }
-          ></div>
         </div>
       </div>
       <div class={"mb-24 px-5 md:hidden"} id="aboutme">
-        z
         <div class={"mb-14 "}>
           <h1 class={"text-6xl tracking-wider"}>
             <span class={"text-primary"}>V</span>
@@ -512,16 +502,11 @@ export default component$(() => {
           </div>
         </div>
       </div>
-      <div class={"mb-12 px-5 md:hidden"}>
-        <div class={"mb-8 text-xl"}>
-          <h4>Potřebné kroky k úspěšné webovce</h4>
-        </div>
-        <Cell />
-      </div>
+
       <div class={"px-5 md:px-24"} id="form">
         <div class={"mb-8 px-5 md:flex md:justify-center"}>
           <h4 class={"text-2xl"}>
-            Zbýbá už jen {""}
+            Sbývá už jen {""}
             <span class={"rounded bg-seconadry px-2 py-1"}>jeden</span>
             {""} krok - napište mi!
           </h4>
@@ -549,7 +534,7 @@ export default component$(() => {
                       class={
                         "block w-full rounded-lg border-0 bg-background py-2 text-white shadow-sm ring-1 ring-inset ring-background placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 md:py-4 md:text-lg"
                       }
-                      placeholder={"Vašek Makovský..."}
+                      placeholder={"Vaše Jméno"}
                       {...props}
                     />
                   </div>
@@ -576,7 +561,7 @@ export default component$(() => {
                       class={
                         "block w-full rounded-lg border-0 bg-background py-2 text-white shadow-sm ring-1 ring-inset ring-background placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 md:py-4 md:text-lg"
                       }
-                      placeholder={"priklad@seznam.cz"}
+                      placeholder={"vas@email.cz"}
                       {...props}
                     />
                   </div>
@@ -604,7 +589,7 @@ export default component$(() => {
                       class={
                         "block w-full rounded-lg border-0 bg-background py-2 text-white shadow-sm ring-1 ring-inset ring-background placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 md:py-4 md:text-lg"
                       }
-                      placeholder={"600 400 100"}
+                      placeholder={"222 444 333"}
                       {...props}
                     />
                   </div>
