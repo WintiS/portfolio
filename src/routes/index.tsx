@@ -7,7 +7,6 @@ import {
 } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { HeaderButton } from "~/components/ui/headerbutton";
-import { Modal } from "@qwik-ui/headless";
 import { SvgImage } from "~/components/ui/svgimage";
 import { SvgWaveTop } from "~/components/ui/svgwavetop";
 import { Project } from "~/components/projects/project";
@@ -24,6 +23,7 @@ import { addDoc, collection } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 import { transporter } from "~/components/mailer";
 import { htmlemailstructure } from "~/components/email/email";
+import { Phonemodal } from "~/components/nav/phonemodal";
 
 export const formSchema = v.object({
   fullname: v.string([v.minLength(2, "Zadejte vaše celé jméno")]),
@@ -150,7 +150,7 @@ export default component$(() => {
   );
 
   return (
-    <div class={"pb-16 text-white"}>
+    <div class={"text-white"}>
       <Navigation menustate={menustate} />
       <div class={"flex justify-center"}>
         <div
@@ -701,38 +701,7 @@ export default component$(() => {
           </p>
         </div>
       </div>
-
-      <Modal
-        bind:show={menustate}
-        class={"w-[100vw] backdrop:backdrop-brightness-110"}
-      >
-        <div
-          class={
-            "sheet fixed top-[8vh] h-[92vh] w-full bg-background text-white"
-          }
-        >
-          <nav
-            class={
-              "flex h-full flex-col gap-12 px-12 pl-20 pt-16 text-lg font-light"
-            }
-          >
-            <ul>
-              <a href="#services">Služby</a>
-            </ul>
-            <ul>
-              <a href="#projects">Portfolio</a>
-            </ul>
-            <ul>
-              <a href="#aboutme">O mně</a>
-            </ul>
-            <ul>
-              <a href="#form" class={"rounded bg-seconadry px-4 py-3"}>
-                Kontaktujte mě
-              </a>
-            </ul>
-          </nav>
-        </div>
-      </Modal>
+      <Phonemodal menustate={menustate} />
     </div>
   );
 });

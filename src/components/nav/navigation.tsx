@@ -11,11 +11,11 @@ export const Navigation = component$((props: Props) => {
     "relative cursor-pointer transition-all ease-in-out before:absolute before:bottom-0 before:left-[50%] before:h-[3px] before:w-0 before:origin-center before:bg-seconadry before:transition-[width] before:duration-500 before:ease-in-out after:absolute after:bottom-0 after:right-[50%] after:h-[3px] after:w-0 after:origin-center after:bg-seconadry after:transition-[width] after:duration-500 after:ease-in-out hover:before:w-[50%] hover:after:w-[50%]";
 
   return (
-    <div class={" h-[9vh] bg-background md:py-2 md:pt-6"}>
+    <div class={" h-[9vh] bg-background pb-[4.5rem]  md:pt-4 "}>
       <div class={"flex items-center justify-around"}>
-        <Link href="#" class={"transition-transform hover:scale-110"}>
+        <Link href="/" class={"transition-transform hover:scale-110"}>
           <Image
-            src="wintis.svg"
+            src="/wintis.svg"
             layout="fixed"
             width={60}
             height={60}
@@ -50,23 +50,23 @@ export const Navigation = component$((props: Props) => {
         <div class={"hidden md:block"}>
           <nav class={"flex gap-6 text-sm"}>
             <ul>
-              <a href="#services" class={underlineClass}>
+              <a href="/#services" class={underlineClass}>
                 Služby
               </a>
             </ul>
             <ul>
-              <a href="#projects" class={underlineClass}>
+              <a href="/#projects" class={underlineClass}>
                 Portfolio
               </a>
             </ul>
             <ul>
-              <Link href="#about" class={underlineClass}>
+              <Link href="/#about" class={underlineClass}>
                 O mně
               </Link>
             </ul>
             <ul>
               <a
-                href="#form"
+                href="/#form"
                 class={
                   "cursor-pointer rounded bg-seconadry px-6 py-3 transition-all duration-200 hover:bg-primary"
                 }

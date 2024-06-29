@@ -305,3 +305,48 @@
   animation-timeline: view();
   animation-range: entry 0% cover 20%;
 }
+
+@keyframes imageslide {
+  from {
+    transform: translateY(20%);
+  }
+  to {
+    transform: translateY(0%);
+  }
+}
+@keyframes imageslideback {
+  from {
+    transform: translateY(0%);
+  }
+  to {
+    transform: translateY(-24px);
+  }
+}
+
+.imageslide {
+  animation: imageslide linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 80%;
+}
+.imageslideback {
+  animation: imageslideback linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 40%;
+}
+
+@keyframes text {
+  from {
+    opacity: 0.3;
+    transform: scale(80%);
+  }
+  to {
+    opacity: 1;
+    transform: scale(100%);
+  }
+}
+
+.textik {
+  animation: text linear;
+  animation-timeline: view();
+  animation-range: entry 0% cover 15%;
+}
