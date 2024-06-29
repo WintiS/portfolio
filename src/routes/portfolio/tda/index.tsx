@@ -78,13 +78,13 @@ export default component$(() => {
         <div class={"textik w-3/4 md:w-2/3"}>
           <div class={"flex justify-around"}>
             <div
-              class={`imageslide hidden h-96  w-1/4 rounded-xl bg-[url('/slide1.jpg')] bg-cover md:block`}
+              class={`imageslide hidden h-96  w-1/4 rounded-lg bg-[url('/slide1.jpg')] bg-cover md:block`}
             ></div>
             <div
-              class={` h-96 w-full -translate-y-4 rounded-xl bg-[url('/slide3.jpg')] bg-cover md:w-1/4 `}
+              class={` h-96 w-full -translate-y-4 rounded-lg bg-[url('/slide3.jpg')] bg-cover md:w-1/4 `}
             ></div>
             <div
-              class={`imageslide hidden h-96   w-1/4 rounded-xl bg-[url('/slide2.jpg')] bg-cover md:block`}
+              class={`imageslide hidden h-96   w-1/4 rounded-lg bg-[url('/slide2.jpg')] bg-cover md:block`}
             ></div>
           </div>
         </div>
@@ -193,10 +193,10 @@ export default component$(() => {
         <div class={"textik w-3/4 md:w-2/3"}>
           <div class={"flex flex-col justify-around md:flex-row"}>
             <div
-              class={` m-1  h-56 w-full rounded-xl bg-[url('/biggrand.jpg')] bg-cover md:h-72 md:w-1/2`}
+              class={` m-1  h-56 w-full rounded-lg bg-[url('/biggrand.jpg')] bg-cover md:h-72 md:w-1/2`}
             ></div>
             <div
-              class={` m-1 h-56 w-full rounded-xl bg-[url('/biggrand2.jpg')] bg-cover md:h-72 md:w-1/2 `}
+              class={` m-1 h-56 w-full rounded-lg bg-[url('/biggrand2.jpg')] bg-cover md:h-72 md:w-1/2 `}
             ></div>
           </div>
         </div>
