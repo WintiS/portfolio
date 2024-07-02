@@ -103,7 +103,7 @@ export default component$(() => {
 
   // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(() => {
-    setInterval(typeChar, 40); // Adjust typing speed here
+    setInterval(typeChar, 50); // Adjust typing speed here
   });
 
   useTask$(({ track }) => {
