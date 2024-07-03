@@ -1,6 +1,7 @@
 import { component$, useSignal } from "@builder.io/qwik";
 import { Navigation } from "~/components/nav/navigation";
 import { Phonemodal } from "~/components/nav/phonemodal";
+import { ReturnBack } from "~/components/portfolio/back";
 import { Techstack } from "~/components/portfolio/techstack";
 import { Wrapper } from "~/components/portfolio/wrapper";
 
@@ -10,6 +11,7 @@ export default component$(() => {
   return (
     <div>
       <Navigation menustate={menustate} />
+      <Phonemodal menustate={menustate} />
 
       <div
         class={" flex h-[78vh] items-center justify-center"}
@@ -201,7 +203,9 @@ export default component$(() => {
           </div>
         </div>
       </div>
-      <Phonemodal menustate={menustate} />
+      <div class={"flex justify-center py-10"}>
+        <ReturnBack />
+      </div>
     </div>
   );
 });

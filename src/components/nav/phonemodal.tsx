@@ -20,16 +20,16 @@ export const Phonemodal = component$((props: Props) => {
           }
         >
           <ul>
-            <a href="#services">Služby</a>
+            <a href="/#services">Služby</a>
           </ul>
           <ul>
-            <a href="#projects">Portfolio</a>
+            <a href="/#projects">Portfolio</a>
           </ul>
           <ul>
-            <a href="#aboutme">O mně</a>
+            <a href="/#aboutme">O mně</a>
           </ul>
           <ul>
-            <a href="#form" class={"rounded bg-seconadry px-4 py-3"}>
+            <a href="/#form" class={"rounded bg-seconadry px-4 py-3"}>
               Kontaktujte mě
             </a>
           </ul>

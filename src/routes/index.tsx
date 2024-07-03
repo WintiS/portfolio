@@ -239,7 +239,7 @@ export default component$(() => {
         <a
           href="#form"
           class={
-            "absolute flex items-center gap-1 rounded-[7px] bg-primary px-6 py-3 md:transition-transform md:hover:translate-x-2"
+            "textik absolute flex items-center gap-1 rounded-[7px] bg-primary px-6 py-3 md:transition-transform md:hover:translate-x-2"
           }
         >
           Kontaktujte mě <LuArrowRight />
@@ -329,7 +329,7 @@ export default component$(() => {
             <a
               href="#form"
               class={
-                "absolute flex items-center gap-1 rounded-[7px] bg-primary px-6 py-3 md:transition-transform md:hover:translate-x-2"
+                "textik absolute flex items-center gap-1 rounded-[7px] bg-primary px-6 py-3 md:transition-transform md:hover:translate-x-2"
               }
             >
               Kontaktujte mě <LuArrowRight />
@@ -383,18 +383,17 @@ export default component$(() => {
             </strong>
           </div>
           <p>
-            Jmenuji se Vítězslav Šíma a jsem front-end developer. Web design mě
-            naplňuje již od mých 13 let, kdy jsem poprvé naprogramoval svoji
-            první webovku. Kromě mé vášně pro kódování mám také zálibu ve street
-            workoutu a wingfoilingu, které mi pomáhají udržet si tzv.{" "}
-            <strong class={"text-primary"}>work-life balance</strong>.
+            Jmenuji se Vítězslav Šíma a jsem front-end developer.{" "}
+            <span class={"text-primary"}>Web design</span> mě naplňuje již od
+            mých 13 let, kdy jsem poprvé naprogramoval svoji první webovku.
+            Kromě programování mě baví wing-foiling a kalistenika.
           </p>
           <br />
           <p>
             Svět digitálního designu a vývoje mě{" "}
-            <strong class={"text-primary"}>fascinuje</strong>. a já se neustále
+            <strong class={"text-primary"}>fascinuje</strong> a já se neustále
             snažím zdokonalovat. Mezi mé technické dovednosti patří práce s
-            platformami jako je Wordpress, Firebase, Shopify, tvorba designů v
+            platformami jako je Wordpress, Firebase, Shopify, tvorba designů ve
             Figmě, a samozřejmě ovládání HTML, CSS a JavaScriptu. Kromě toho
             používám různé frameworky, včetně QWIK.js, který mi umožňuje rychle
             a efektivně vyvíjet{" "}
@@ -402,11 +401,11 @@ export default component$(() => {
           </p>
           <br />
           <p>
-            Jsem nadšený tím, co dělám, a rád bych vám pomohl přinést vaše
+            Jsem nadšený tím, co dělám, a rád bych vám pomohl přivést vaše
             online projekty k životu. Pojďme společně vytvořit webové stránky,
             které budou nejen vizuálně atraktivní, ale také efektivní.{" "}
             <strong class={"text-primary"}>
-              Budu se těšit na spolupráci s vámi!
+              Budu se těšit na naši spolupráci!
             </strong>
           </p>
         </div>
@@ -470,19 +469,18 @@ export default component$(() => {
                 <strong class={"px-3 text-primary"}>O mně</strong>
               </div>
               <p>
-                Jmenuji se Vítězslav Šíma a jsem front-end developer. Web design
-                mě naplňuje již od mých 13 let, kdy jsem poprvé naprogramoval
-                svoji první webovku. Kromě mé vášně pro kódování mám také zálibu
-                ve street workoutu a wingfoilingu, které mi pomáhají udržet si
-                tzv. <strong class={"text-primary"}>work-life balance</strong>.
+                Jmenuji se Vítězslav Šíma a jsem front-end developer.{" "}
+                <span class={"text-primary"}>Web design</span> mě naplňuje již
+                od mých 13 let, kdy jsem poprvé naprogramoval svoji první
+                webovku. Kromě programování mě baví wing-foiling a kalistenika.
               </p>
               <br />
               <p>
                 Svět digitálního designu a vývoje mě{" "}
-                <strong class={"text-primary"}>fascinuje</strong>. a já se
+                <strong class={"text-primary"}>fascinuje</strong> a já se
                 neustále snažím zdokonalovat. Mezi mé technické dovednosti patří
                 práce s platformami jako je Wordpress, Firebase, Shopify, tvorba
-                designů v Figmě, a samozřejmě ovládání HTML, CSS a JavaScriptu.
+                designů ve Figmě, a samozřejmě ovládání HTML, CSS a JavaScriptu.
                 Kromě toho používám různé frameworky, včetně QWIK.js, který mi
                 umožňuje rychle a efektivně vyvíjet{" "}
                 <strong class={"text-primary"}>interaktivní</strong> webové
@@ -490,12 +488,12 @@ export default component$(() => {
               </p>
               <br />
               <p>
-                Jsem nadšený tím, co dělám, a rád bych vám pomohl přinést vaše
+                Jsem nadšený tím, co dělám, a rád bych vám pomohl přivést vaše
                 online projekty k životu. Pojďme společně vytvořit webové
                 stránky, které budou nejen vizuálně atraktivní, ale také
                 efektivní.{" "}
                 <strong class={"text-primary"}>
-                  Budu se těšit na spolupráci s vámi!
+                  Budu se těšit na naši spolupráci!
                 </strong>
               </p>
             </div>

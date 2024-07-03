@@ -271,7 +271,11 @@
 @keyframes appear {
   0% {
     transform: translateY(-50%);
+
     opacity: 0;
+  }
+  40% {
+    opacity: 0.95;
   }
   70% {
     transform: translateY(-15%);

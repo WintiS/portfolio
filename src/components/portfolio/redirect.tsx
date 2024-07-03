@@ -1,4 +1,5 @@
 import { component$ } from "@builder.io/qwik";
+import { LuExternalLink } from "@qwikest/icons/lucide";
 
 interface Props {
   url: string;
@@ -9,9 +10,11 @@ export const Redirect = component$((props: Props) => {
     <div>
       <a
         href={`https://${props.url}`}
-        class={"text-primary transition-colors hover:text-white"}
+        class={
+          "flex items-center gap-1 text-primary transition-colors hover:text-white"
+        }
       >
-        {props.url}
+        {props.url} <LuExternalLink />
       </a>
     </div>
   );

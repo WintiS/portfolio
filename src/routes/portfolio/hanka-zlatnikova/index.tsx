@@ -1,6 +1,7 @@
 import { component$, useSignal } from "@builder.io/qwik";
 import { Navigation } from "~/components/nav/navigation";
 import { Phonemodal } from "~/components/nav/phonemodal";
+import { ReturnBack } from "~/components/portfolio/back";
 import { Redirect } from "~/components/portfolio/redirect";
 import { Techstack } from "~/components/portfolio/techstack";
 import { Wrapper } from "~/components/portfolio/wrapper";
@@ -11,6 +12,7 @@ export default component$(() => {
   return (
     <div>
       <Navigation menustate={menustate} />
+      <Phonemodal menustate={menustate} />
 
       <div
         class={" hidden h-[88vh] items-center justify-center md:flex"}
@@ -23,11 +25,11 @@ export default component$(() => {
         <div class={"w-3/4"}>
           <h1 class={"mb-1 text-2xl"}>
             Hanka Zlatníková: Konverzní stránka pro osobní prezentaci, prodej
-            e-booků a jídelníčků.
+            e-booků a jídelníčků
           </h1>
           <h2 class={"mb-4 text-lg"}>
             Jak jsem postupoval při vytváření zejména prodejní webovky pro
-            influencerku @hanka_rainbow_fairy (přes 255 tis. sledujících)
+            influencerku @hanka_rainbow_fairy (přes 255 tis. sledujících).
           </h2>
           <Redirect url="hankazlatnikova.cz" />
         </div>
@@ -47,7 +49,7 @@ export default component$(() => {
           </h1>
           <h2 class={"mb-6"}>
             Jak jsem postupoval při vytváření zejména prodejní webovky pro
-            influencerku @hanka_rainbow_fairy (přes 255 tis. sledujících)
+            influencerku @hanka_rainbow_fairy (přes 255 tis. sledujících).
           </h2>
           <Redirect url="hankazlatnikova.cz" />
         </div>
@@ -95,7 +97,7 @@ export default component$(() => {
         <div class={"textik w-3/4 md:w-2/3"}>
           <div
             class={
-              "h-[36rem] w-full rounded-sm  bg-[url('/hankamobile.png')] bg-cover md:h-96 md:bg-[url('/hankacart.jpeg')]"
+              "h-[36rem] w-full rounded-sm  bg-[url('/hankamobile.png')] bg-cover sm:h-96 sm:bg-[url('/hankacart.jpeg')]"
             }
           ></div>
         </div>
@@ -147,7 +149,7 @@ export default component$(() => {
         <div class={"textik w-3/4 md:w-2/3"}>
           <div
             class={
-              "h-[36rem] w-full rounded-sm  bg-[url('/hankacheckoutmobile.png')] bg-cover md:h-96 md:bg-[url('/hankacheckout.jpeg')]"
+              "h-[36rem] w-full rounded-sm  bg-[url('/hankacheckoutmobile.png')] bg-cover sm:h-96 sm:bg-[url('/hankacheckout.jpeg')]"
             }
           ></div>
         </div>
@@ -159,8 +161,9 @@ export default component$(() => {
           </div>
         </Wrapper>
       </div>
-
-      <Phonemodal menustate={menustate} />
+      <div class={"flex justify-center py-10"}>
+        <ReturnBack />
+      </div>
     </div>
   );
 });

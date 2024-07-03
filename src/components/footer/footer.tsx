@@ -2,7 +2,7 @@ import { component$ } from "@builder.io/qwik";
 import { LuHeart } from "@qwikest/icons/lucide";
 export const Footer = component$(() => {
   return (
-    <div class={"bg-seconadry py-6 text-sm"}>
+    <div class={"mt-2 bg-seconadry py-6 text-sm"}>
       <div class={"mb-3 flex items-center justify-center"}>
         <a
           href={"https://github.com/WintiS"}
