@@ -6,16 +6,18 @@
   },
   "engines-annotation": "Mostly required by sharp which needs a Node-API v9 compatible runtime",
   "private": true,
-  "trustedDependencies": ["sharp"],
+  "trustedDependencies": [
+    "sharp"
+  ],
   "trustedDependencies-annotation": "Needed for bun to allow running install scripts",
   "type": "module",
   "scripts": {
     "build": "qwik build",
     "build.client": "vite build",
     "build.preview": "vite build --ssr src/entry.preview.tsx",
-    "build.server": "echo x",
+    "build.server": "vite build -c adapters/netlify-edge/vite.config.ts",
     "build.types": "tsc --incremental --noEmit",
-    "deploy": "echo 'Run \"npm run qwik add\" to install a server adapter'",
+    "deploy": "netlify deploy --build",
     "dev": "vite --mode ssr",
     "dev.debug": "node --inspect-brk ./node_modules/vite/bin/vite.js --mode ssr --force",
     "fmt": "prettier --write .",
@@ -29,6 +31,7 @@
   "devDependencies": {
     "@builder.io/qwik": "^1.5.1",
     "@builder.io/qwik-city": "^1.5.1",
+    "@netlify/edge-functions": "^2.0.0",
     "@tailwindcss/forms": "^0.5.7",
     "@types/compression": "^1.7.2",
     "@types/eslint": "^8.56.5",
@@ -41,6 +44,7 @@
     "dotenv": "^16.3.2",
     "eslint": "^8.57.0",
     "eslint-plugin-qwik": "^1.5.1",
+    "netlify-cli": "^15.0.0",
     "postcss": "^8.4.31",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.4",
