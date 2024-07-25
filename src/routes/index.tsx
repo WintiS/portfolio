@@ -21,7 +21,7 @@ import * as v from "valibot";
 import { formAction$, reset, useForm, valiForm$ } from "@modular-forms/qwik";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../firebaseConfig";
-import { transporter } from "~/components/mailer";
+import { getNodemailer } from "~/components/mailer";
 import { htmlemailstructure } from "~/components/email/email";
 import { Phonemodal } from "~/components/nav/phonemodal";
 
@@ -714,7 +714,7 @@ export const head: DocumentHead = {
   ],
 };
 
-export const useFormAction = formAction$<FormSchema>(async (values) => {
+export const useFormAction = formAction$<FormSchema>(async (values, ev) => {
   console.log(values);
   addDoc(collection(db, "form"), {
     fullname: values.fullname,
@@ -739,6 +739,7 @@ export const useFormAction = formAction$<FormSchema>(async (values) => {
     cíl: ${values.goal},
     rozpočet: ${values.budget}`,
   };
+  const transporter = getNodemailer(ev);
   try {
     console.log(await transporter.sendMail(mailOptions));
     console.log(await transporter.sendMail(mailOptionsCustomer));
