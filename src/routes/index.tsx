@@ -357,7 +357,7 @@ export default component$(() => {
         <div class={"flex items-center gap-2"}>
           <div class={"flex flex-col gap-7 text-sm "}>
             <span>QWIK.js</span>
-            <span>Wordpress</span>
+            <span>Webflow</span>
             <span>Tailwind</span>
             <span>Figma</span>
             <span>HTML & CSS</span>
@@ -438,7 +438,7 @@ export default component$(() => {
                   heightclass={qwik}
                 />
                 <Collumn
-                  text="WordPress"
+                  text="Webflow"
                   colorclass="bg-primary"
                   heightclass={word}
                 />
