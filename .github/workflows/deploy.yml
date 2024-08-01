@@ -1,0 +1,36 @@
+name: Deploy main
+
+on:
+    push:
+        branches: [main]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v3
+
+            - name: Set up Docker Buildx
+              uses: docker/setup-buildx-action@v2
+
+            - name: Login to Docker Hub
+              uses: docker/login-action@v3
+              with:
+                  registry: registry.toming.cz
+                  username: wintis
+                  password: ${{ secrets.REGISTRY_PASSWORD }}
+
+            - name: Build
+              uses: docker/build-push-action@v3
+              with:
+                  context: ./
+                  tags: registry.toming.cz/wintis-portfolio:latest
+                  push: true
+
+            - name: Send deploy signal
+              uses: fjogeleit/http-request-action@v1
+              with:
+                  url: "https://controller.toming.cz/container/eqTpbLecSiKc0VRA334p/_restart"
+                  method: "POST"
+                  bearerToken: ${{ secrets.CONTROLLER_API_KEY }}

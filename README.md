@@ -138,3 +138,13 @@ netlify deploy --build
 You must use the `--build` flag whenever you deploy. This ensures that the Edge Functions that this starter site relies on are generated and available when you deploy your site.
 
 Add `--prod` flag to deploy to production.
+
+## Bun Server
+
+This app has a minimal [Bun server](https://bun.sh/docs/api/http) implementation. After running a full build, you can preview the build using the command:
+
+```
+bun run serve
+```
+
+Then visit [http://localhost:3000/](http://localhost:3000/)
