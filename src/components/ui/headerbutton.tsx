@@ -4,18 +4,15 @@ import { LuArrowRight } from "@qwikest/icons/lucide";
 export const HeaderButton = component$(() => {
   return (
     <div>
-      <button
-        class={"absolute mt-3  rounded bg-seconadry/40 px-12 py-3 text-xl "}
-      >
-        Moje práce
-      </button>
       <a
-        class={
-          "absolute ml-3 flex items-center gap-1 rounded bg-seconadry px-10 py-3 text-xl transition-all hover:-mb-1 hover:ml-4"
-        }
         href="#projects"
+        class={
+          " inline-block items-center gap-1 rounded-[5px] border-2 border-primary bg-transparent px-5  py-3 transition-colors hover:bg-primary"
+        }
       >
-        Moje práce <LuArrowRight />
+        <p class={"flex items-center gap-2"}>
+          Portfolio projektů <LuArrowRight />
+        </p>
       </a>
     </div>
   );

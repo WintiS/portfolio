@@ -14,6 +14,7 @@ export default {
       fontFamily: {
         display: ["Rubik", "Helvetica", "sans"],
         pretty: ["Rock Salt", "Cursive", "sans"],
+        modern: ["Inter", "sans-serif", "sans"],
       },
       // https://uicolors.app/createł
     },

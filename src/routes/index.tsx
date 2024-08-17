@@ -74,7 +74,7 @@ export default component$(() => {
   const charIndex = useSignal(0);
   const theSentence = useSignal("");
   const sentences = [
-    "Nabízím kompletní tvorbu webu od A do Z. Business weby, portfolia, webové aplikace, eshopy.",
+    "Jsem frontend developer a nabízím kompletní tvorbu webových stránek. Tvořím firemní weby, portfolia, webové aplikace, eshopy...",
   ];
 
   const isSubmitted = useSignal(false);
@@ -153,17 +153,15 @@ export default component$(() => {
     <div class={"text-white"}>
       <Navigation menustate={menustate} />
       <div class={"flex justify-center"}>
-        <div
-          class={"flex w-3/4 justify-between pt-12 md:mb-20 md:pt-32 xl:mb-32"}
-        >
+        <div class={"mb-16 flex w-3/4 justify-between pt-20 md:pt-32 xl:mb-32"}>
           <div class={"md:pt-6 "}>
             <h1 class={"mb-12 text-3xl md:mb-14"}>
               <p
                 class={
-                  "inline-block bg-gradient-to-r from-primary to-[#FF0094] bg-clip-text pb-4 pt-3 font-pretty text-5xl text-transparent"
+                  "inline-block bg-gradient-to-r from-primary to-[#FF0094] bg-clip-text pb-4 pt-3 font-display text-6xl text-transparent md:text-7xl"
                 }
               >
-                Frontend developer
+                Vítězslav Šíma
               </p>
               <p class={"text-lg"}>{theSentence.value}|</p>
             </h1>
@@ -191,7 +189,7 @@ export default component$(() => {
         </div>
       </div>
 
-      <div class={"px-5 md:px-12"}>
+      <div class={"px-5 pb-16 md:px-12"}>
         <div class={"mb-5 rounded px-8 py-3 text-center text-2xl md:mb-0"}>
           <span class={""}>Proč mít webovou stránku?</span>
         </div>
@@ -236,16 +234,8 @@ export default component$(() => {
             fill="#A23405"
           />
         </svg>
-        <a
-          href="#form"
-          class={
-            "textik absolute flex items-center gap-1 rounded-[7px] bg-primary px-6 py-3 md:transition-transform md:hover:translate-x-2"
-          }
-        >
-          Kontaktujte mě <LuArrowRight />
-        </a>
       </div>
-      <div>
+      <div class={"pb-24"}>
         <div class={"flex items-center justify-center"}>
           <SvgWaveTop />
         </div>
@@ -314,8 +304,8 @@ export default component$(() => {
           <SvgWaveBottom />
         </div>
       </div>
-      <div class={"mb-24  flex items-center justify-center md:mb-0"}>
-        <div class={" px-5 md:flex md:w-3/4 md:gap-16  md:px-0 lg:w-2/3"}>
+      <div class={"mb-24  flex items-center justify-center pb-16 md:mb-0"}>
+        <div class={" gap-8 px-5 md:flex md:w-3/4 md:gap-16 md:px-0 lg:w-2/3"}>
           <div class={"mock"}>
             <img src={"/macbookpromock.png"} width={2000} height={1000} />
           </div>
@@ -324,12 +314,14 @@ export default component$(() => {
               Návrh webu <span class={"text-primary"}>zdarma</span>
             </h4>
             <p class={"mb-4 md:text-lg"}>
-              Kompletí návrh webu máte zdarma. Bez výsledků nic neplatíte.
+              Každému klienotvi nabízím návrh webu zdarma. Spokojenost klienta
+              je pro mě na prvním místě a díky tomuto řešení má jistotu, že si
+              nekupuje tzv. "Zajíce v pytli".
             </p>
             <a
               href="#form"
               class={
-                "textik absolute flex items-center gap-1 rounded-[7px] bg-primary px-6 py-3 md:transition-transform md:hover:translate-x-2"
+                "textik absolute flex items-center gap-1 rounded-[5px] border-2 border-primary bg-transparent px-4 py-2 md:transition-colors md:hover:bg-primary"
               }
             >
               Kontaktujte mě <LuArrowRight />
@@ -338,20 +330,10 @@ export default component$(() => {
         </div>
       </div>
       <div class={"mb-24 px-5 md:hidden"} id="aboutme">
-        <div class={"mb-14 "}>
+        <div class={"mb-6 md:mb-14 "}>
           <h1 class={"text-6xl tracking-wider"}>
-            <span class={"text-primary"}>V</span>
-            ítězsla
-            <span class={"text-primary"}>v</span>
-            <div class={"flex items-baseline"}>
-              Ším
-              <span class={"text-primary"}>a</span>
-              <div class={"ml-3 -translate-y-2 text-sm"}>
-                <strong class={"rounded-md bg-primary px-2 py-1"}>
-                  Tech stack
-                </strong>
-              </div>
-            </div>
+            Ovládám
+            <span class={"text-primary"}>:</span>
           </h1>
         </div>
         <div class={"flex items-center gap-2"}>
@@ -376,11 +358,12 @@ export default component$(() => {
             <div class={"h-2 w-48 rounded bg-white"}></div>
           </div>
         </div>
-        <div class={"mt-10"}>
-          <div class={"mb-3"}>
-            <strong class={"rounded-md bg-primary px-2 py-1 text-white"}>
+        <div class={"mt-14"}>
+          <div class={"mb-6"}>
+            <h1 class={"text-6xl tracking-wider"}>
               O mně
-            </strong>
+              <span class={"text-primary"}>:</span>
+            </h1>
           </div>
           <p>
             Jmenuji se Vítězslav Šíma a jsem front-end developer.{" "}
@@ -501,7 +484,7 @@ export default component$(() => {
         </div>
       </div>
 
-      <div class={"px-5 md:px-24"} id="form">
+      <div class={"px-5 pt-12 md:px-24 md:pt-0"} id="form">
         <div class={"mb-8 px-5 md:flex md:justify-center"}>
           <h4 class={"text-2xl"}>
             Sbývá už jen {""}
