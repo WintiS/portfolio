@@ -1,4 +1,4 @@
-import { type RequestEventBase } from "@builder.io/qwik-city";
+/*import { type RequestEventBase } from "@builder.io/qwik-city";
 import nodemailer from "nodemailer";
 
 // export const transporter = nodemailer.createTransport({
@@ -18,3 +18,4 @@ export function getNodemailer(ev: RequestEventBase) {
     },
   });
 }
+*/

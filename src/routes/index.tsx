@@ -21,8 +21,8 @@ import * as v from "valibot";
 import { formAction$, reset, useForm, valiForm$ } from "@modular-forms/qwik";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../firebaseConfig";
-import { getNodemailer } from "~/components/mailer";
-import { htmlemailstructure } from "~/components/email/email";
+//import { getNodemailer } from "~/components/mailer";
+//import { htmlemailstructure } from "~/components/email/email";
 import { Phonemodal } from "~/components/nav/phonemodal";
 
 export const formSchema = v.object({
@@ -697,7 +697,7 @@ export const head: DocumentHead = {
   ],
 };
 
-export const useFormAction = formAction$<FormSchema>(async (values, ev) => {
+export const useFormAction = formAction$<FormSchema>(async (values) => {
   console.log(values);
   addDoc(collection(db, "form"), {
     fullname: values.fullname,
@@ -706,7 +706,7 @@ export const useFormAction = formAction$<FormSchema>(async (values, ev) => {
     goal: values.goal,
     budget: values.budget,
   });
-  const mailOptionsCustomer = {
+  /* const mailOptionsCustomer = {
     from: "noreply.simavitezslav@gmail.com",
     to: values.mail,
     subject: `Vyplnění formuláře - ${values.fullname}`,
@@ -729,7 +729,7 @@ export const useFormAction = formAction$<FormSchema>(async (values, ev) => {
   } catch (error) {
     console.log(error);
   }
-
+  */
   return {
     status: "success",
   };
