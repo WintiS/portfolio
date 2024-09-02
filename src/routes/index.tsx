@@ -221,7 +221,11 @@ export default component$(() => {
       </div>
 
       <div class={"pb-24"}>
-        <div class={"flex items-center justify-center md:-translate-y-16"}>
+        <div
+          class={
+            "flex -translate-y-16 items-center justify-center md:translate-y-0"
+          }
+        >
           <SvgWaveTop />
         </div>
         <div
