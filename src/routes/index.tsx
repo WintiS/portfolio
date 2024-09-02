@@ -673,11 +673,12 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "Welcome to Qwik",
+  title: "Vítězslav Šíma | Portfolio",
   meta: [
     {
       name: "description",
-      content: "Qwik site description",
+      content:
+        "Vítězslav Šíma je front-end vývojář, který nabízí kompletní služby webového vývoje včetně firemních webových stránek, portfolií, webových aplikací a e-commerce stránek.",
     },
   ],
 };
