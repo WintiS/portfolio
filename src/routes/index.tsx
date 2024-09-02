@@ -211,7 +211,7 @@ export default component$(() => {
           Co pro vás mohu <span class={"text-primary"}>vytvořit</span>
         </span>
       </div>
-      <div class={"mb-12 mb-32 px-5 md:mb-[24vw] md:px-12"}>
+      <div class={"mb-56 px-5 md:mb-[24vw] md:px-12"}>
         <div class={"md:hidden"}>
           <PostranaOne />
         </div>
