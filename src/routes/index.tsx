@@ -220,13 +220,13 @@ export default component$(() => {
         </div>
       </div>
 
-      <div class={"pb-0"}>
-        <div class={"flex items-center justify-center"}>
+      <div class={"pb-24"}>
+        <div class={"mb-24 flex items-center justify-center"}>
           <SvgWaveTop />
         </div>
         <div
           class={
-            "z-10 mt-[70px] w-full bg-accent px-5 pb-10 pt-5 md:mt-[20vw]  md:px-20 lg:px-28 xl:px-36"
+            "z-10 mt-[100px] w-full bg-accent px-5 pb-10 pt-5 md:mt-[20vw]  md:px-20 lg:px-28 xl:px-36"
           }
           id="projects"
         >
