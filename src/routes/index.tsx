@@ -220,7 +220,7 @@ export default component$(() => {
         </div>
       </div>
 
-      <div class={"pb-24"}>
+      <div class={"pb-0"}>
         <div class={"flex items-center justify-center"}>
           <SvgWaveTop />
         </div>
