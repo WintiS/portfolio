@@ -50,7 +50,7 @@ export const htmlemailstructure = `<!DOCTYPE html>
 <body>
     <div class="container">
         <div class="header">
-            <h1>Potvrzení o vyplnění formuláře </h1>
+            <h2>Potvrzení o vyplnění formuláře </h2>
         </div>
         <div class="content">
             <p>Děkuji vám za vyplnění formuláře na mé stránce <a href="https://wintis.cz">wintis.cz</a>. Ozvu se vám co nejdříve.</p>

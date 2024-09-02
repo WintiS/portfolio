@@ -22,7 +22,7 @@ import { formAction$, reset, useForm, valiForm$ } from "@modular-forms/qwik";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../firebaseConfig";
 //import { getNodemailer } from "~/components/mailer";
-//import { htmlemailstructure } from "~/components/email/email";
+import { htmlemailstructure } from "~/components/email/email";
 import { Phonemodal } from "~/components/nav/phonemodal";
 
 export const formSchema = v.object({
@@ -699,37 +699,33 @@ export const head: DocumentHead = {
 
 export const useFormAction = formAction$<FormSchema>(async (values) => {
   console.log(values);
-  addDoc(collection(db, "form"), {
-    fullname: values.fullname,
+  await addDoc(collection(db, "form"), {
+    to: [values.mail],
+    message: {
+      subject: `Vyplnění formuláře - ${values.fullname}`,
+      html: htmlemailstructure,
+    },
+  });
+  await addDoc(collection(db, "form"), {
+    to: ["kviteksima@seznam.cz"],
+    message: {
+      subject: `Nové vyplnění formuláře od>>> ${values.fullname}`,
+      text: `Jméno: ${values.fullname},
+      email: ${values.mail},
+      telefon: ${values.phone},
+      cíl: ${values.goal},
+      rozpočet: ${values.budget}`,
+    },
+  });
+  await addDoc(collection(db, "clients"), {
+    name: values.fullname,
     email: values.mail,
     phone: values.phone,
     goal: values.goal,
     budget: values.budget,
+    have_contacted: false,
   });
-  /* const mailOptionsCustomer = {
-    from: "noreply.simavitezslav@gmail.com",
-    to: values.mail,
-    subject: `Vyplnění formuláře - ${values.fullname}`,
-    html: htmlemailstructure,
-  };
-  const mailOptions = {
-    from: "noreply.simavitezslav@gmail.com",
-    to: "kviteksima@seznam.cz",
-    subject: `Nové vyplnění formuláře od>>> ${values.fullname}`,
-    text: `Jméno: ${values.fullname},
-    email: ${values.mail},
-    telefon: ${values.phone},
-    cíl: ${values.goal},
-    rozpočet: ${values.budget}`,
-  };
-  const transporter = getNodemailer(ev);
-  try {
-    console.log(await transporter.sendMail(mailOptions));
-    console.log(await transporter.sendMail(mailOptionsCustomer));
-  } catch (error) {
-    console.log(error);
-  }
-  */
+
   return {
     status: "success",
   };
