@@ -221,7 +221,7 @@ export default component$(() => {
       </div>
 
       <div class={"pb-24"}>
-        <div class={"flex translate-y-16 items-center justify-center"}>
+        <div class={"flex -translate-y-16 items-center justify-center"}>
           <SvgWaveTop />
         </div>
         <div
