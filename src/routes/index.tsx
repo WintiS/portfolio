@@ -208,10 +208,10 @@ export default component$(() => {
       </div>
       <div class={"mb-10 rounded px-5 text-center text-2xl"} id={"services"}>
         <span>
-          Se mnou máte o vše <span class={"text-primary"}>postaráno</span>
+          Co pro vás mohu <span class={"text-primary"}>vytvořit</span>
         </span>
       </div>
-      <div class={"mb-12 px-5 md:px-12"}>
+      <div class={"mb-12 mb-32 px-5 md:mb-[24vw] md:px-12"}>
         <div class={"md:hidden"}>
           <PostranaOne />
         </div>
@@ -219,22 +219,7 @@ export default component$(() => {
           <PostaranoTwo />
         </div>
       </div>
-      <div class={"mb-32 flex items-center justify-center md:mb-[24vw]"}>
-        <svg
-          width="295"
-          height="118"
-          viewBox="0 0 295 118"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M152.858 9.53395C190.333 10.5539 221.629 8.19825 255.287 18.2155C288.946 28.2327 303.923 40.0283 289.184 73.5656C275.245 105.28 236.047 108.793 195.065 115.631C167.106 120.296 138.809 115.463 111.72 108.203C74.9709 98.3534 27.7464 113.22 10.5374 85.3304C-8.78495 35.4117 -1.58523 32.0256 32.5607 9.53411C64.2644 -11.3487 111.887 8.41882 152.858 9.53395Z"
-            fill="#A23405"
-          />
-        </svg>
-      </div>
+
       <div class={"pb-24"}>
         <div class={"flex items-center justify-center"}>
           <SvgWaveTop />
@@ -314,9 +299,9 @@ export default component$(() => {
               Návrh webu <span class={"text-primary"}>zdarma</span>
             </h4>
             <p class={"mb-4 md:text-lg"}>
-              Každému klienotvi nabízím návrh webu zdarma. Spokojenost klienta
-              je pro mě na prvním místě a díky tomuto řešení má jistotu, že si
-              nekupuje tzv. "Zajíce v pytli".
+              Vždy vám po úvodní konzultaci nejprve předložím grafický návrh
+              webu. Díky tomu si můžete být jisti, že finální web bude vypadat
+              podle vašich představ.
             </p>
             <a
               href="#form"

@@ -1,4 +1,5 @@
 import { component$, useSignal, $ } from "@builder.io/qwik";
+import { Link } from "@builder.io/qwik-city";
 
 export const PostaranoTwo = component$(() => {
   const currentnavstate = useSignal(1);
@@ -60,39 +61,46 @@ export const PostaranoTwo = component$(() => {
 
   return (
     <div class={"flex items-start justify-center gap-10"}>
-      <div class={"h-56 w-[50vw] overflow-y-hidden text-sm lg:text-lg"}>
+      <div class={"h-60 w-[50vw] overflow-y-hidden text-sm lg:text-lg"}>
         <div class={`${text.value} transition-transform`}>
           {/*-translate-y-64 -translate-y-[29rem]*/}
-          <p class={`h-56`}>
-            Při naší spolupráci vám poskytnu osobní péči a individuální přístup,
-            který bude odpovídat vašim potřebám a cílům. Bez ohledu na to, zda
-            potřebujete osobní portfólio, firemní webové stránky nebo e-shop,
-            mohu vám pomoci vytvořit web, který vás reprezentuje online a pomůže
-            vám dosáhnout úspěchu. Kontaktujte mě ještě dnes a společně začneme
-            pracovat na vašem úspěšném projektu!
+          <p class={`h-60`}>
+            Vytvořím pro vás moderní a profesionální firemní web, který nejen
+            prezentuje vaši značku, ale také zaujme vaše zákazníky. Zároveň
+            integruji všechny potřebné funkce, jako je kontaktní formulář, blog,
+            nebo galerie, které pomohou vaší firmě růst a oslovit širší
+            publikum. Dbám na responzivní design, aby web vypadal skvěle na
+            všech zařízeních, od mobilů po stolní počítače. Vždy vám po úvodní
+            konzultaci nejprve předložím grafický návrh webu. Díky tomu si
+            můžete být jisti, že finální web bude vypadat podle vašich představ.
+            Při odevzdání webu vás naučím používat editační software, abyste
+            mohli sami měnit detaily na webu, či přidávat příspěvky do blogu.
           </p>
           <br />
           <p class={`h-56`}>
-            Váš web je vaší digitální vizitkou, a je důležité zajistit jeho
-            bezpečnost a správnou funkčnost. Nabízím služby údržby a zabezpečení
-            webu, které vám pomohou udržet váš online prostor v bezpečí a v
-            optimálním stavu. S pravidelnými aktualizacemi softwaru,
-            monitorováním bezpečnostních hrozeb se postarám o to, aby váš web
-            fungoval bezproblémově a byl chráněn před potenciálními útoky.
-            Nechte mě starat se o technické detaily, abyste se mohli plně
-            soustředit na své podnikání. Kontaktujte mě a já vám rád vše
-            přiblížím.
+            Pokud vaše potřeby vyžadují něco extra, nabízím naprogramování
+            webové aplikace. V tomhle případě se web netvoří přes software, ale
+            píše se pomocí programovacích jazyků. To mi umožňuje naprostou
+            svobodu a dokážu díky tomu vytvořit úplně jakýkoli požadavek. Mezi
+            příklady webových aplikací může patřit například{" "}
+            <Link
+              class={"text-primary underline"}
+              href="/portfolio/jaroska-jidelna"
+            >
+              web školní jídelny
+            </Link>
+            , vyhledávače letů nebo online kalkulačky povinných ručení.{" "}
           </p>
           <br />
           <p class={`h-56`}>
-            Chcete, aby váš web byl snadno nalezen ve výsledcích vyhledávání a
-            přilákal více návštěvníků? S pomocí SEO optimalizace mohu zlepšit
-            viditelnost vašeho webu a pomoci vám dosáhnout vyšších pozic ve
-            vyhledávačích. Od analýzy klíčových slov po optimalizaci obsahu a
-            technických prvků webu se postarám o to, aby váš web byl
-            optimalizován pro vyhledávací algoritmy a přilákal relevantní
-            návštěvníky. Kontaktujte mě a já vám rád přiblížím, jak mohu zvýšit
-            viditelnost vašeho webu a přinést vám více organického provozu.
+            Vytvořím pro vás plně funkční eshop, který je připravený na růst a
+            expanzi vašeho online podnikání. Od atraktivního a uživatelsky
+            přívětivého designu po intuitivní nákupní košík a pokročilé platební
+            možnosti – postarám se o každý detail. Zajistím, aby váš eshop byl
+            optimalizován pro vyhledávače, což vám pomůže dosáhnout lepší
+            viditelnosti a zvýšit počet návštěvníků. I u e-shopu se vždy po
+            první schůze společne shodneme na grafickém návrhu webu, který vám
+            zaručí spokojenost s finílním e-shopem.
           </p>
         </div>
       </div>
@@ -108,13 +116,13 @@ export const PostaranoTwo = component$(() => {
         </div>
         <div class={"flex justify-around md:flex-col md:px-4"}>
           <button class={text1} onClick$={() => menuFunction(1)}>
-            Tvorba webu
+            Firemní webové stránky
           </button>
           <button class={text2} onClick$={() => menuFunction(2)}>
-            Údžba a bezpečnost
+            Komplexní webová aplikace
           </button>
           <button class={text3} onClick$={() => menuFunction(3)}>
-            SEO
+            E-shop
           </button>
         </div>
       </div>
