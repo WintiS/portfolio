@@ -15,10 +15,10 @@ export const Navigation = component$((props: Props) => {
       <div class={"flex w-3/4 items-center justify-between md:w-2/3"}>
         <Link href="/" class={"transition-transform hover:scale-110"}>
           <Image
-            src="/wintis.svg"
+            src="/wintispng.png"
             layout="fixed"
-            width={60}
-            height={60}
+            width={70}
+            height={70}
             alt="wintis"
           />
         </Link>
