@@ -1,6 +1,7 @@
-import { component$ } from "@builder.io/qwik";
-import { LuHeart } from "@qwikest/icons/lucide";
+import { component$, useSignal } from "@builder.io/qwik";
+import { LuHeart, LuHeartHandshake } from "@qwikest/icons/lucide";
 export const Footer = component$(() => {
+  const isUnClicked = useSignal(true);
   return (
     <div class={"mt-2 bg-seconadry py-6 text-sm"}>
       <div class={"mb-3 flex items-center justify-center"}>
@@ -12,7 +13,17 @@ export const Footer = component$(() => {
         </a>
       </div>
       <div class={"flex items-center justify-center gap-1"}>
-        <LuHeart class={"text-xl"} />
+        <div
+          class={"cursor-pointer text-xl "}
+          onClick$={() => (isUnClicked.value = !isUnClicked.value)}
+        >
+          {isUnClicked.value ? (
+            <LuHeart />
+          ) : (
+            <LuHeartHandshake class={"transition-all hover:text-2xl"} />
+          )}
+        </div>
+
         <span>Vítězslav Šíma 2024</span>
       </div>
     </div>
