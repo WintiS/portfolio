@@ -12,7 +12,9 @@ export const Phonemodal = component$((props: Props) => {
       class={"w-[100vw] backdrop:backdrop-brightness-110"}
     >
       <div
-        class={"sheet fixed top-[8vh] h-[92vh] w-full bg-background text-white"}
+        class={
+          "sheet fixed top-[12vh] h-[88vh] w-full bg-background text-white"
+        }
       >
         <nav
           class={
