@@ -61,10 +61,10 @@ export const PostaranoTwo = component$(() => {
 
   return (
     <div class={"flex items-start justify-center gap-10"}>
-      <div class={"h-60 w-[50vw] overflow-y-hidden text-sm lg:text-lg"}>
+      <div class={"h-64 w-[50vw] overflow-y-hidden text-sm xl:text-lg"}>
         <div class={`${text.value} transition-transform`}>
           {/*-translate-y-64 -translate-y-[29rem]*/}
-          <p class={`h-60`}>
+          <p class={`h-64 `}>
             Vytvořím pro vás moderní a profesionální firemní web, který nejen
             prezentuje vaši značku, ale také zaujme vaše zákazníky. Zároveň
             integruji všechny potřebné funkce, jako je kontaktní formulář, blog,
