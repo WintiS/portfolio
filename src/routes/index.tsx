@@ -24,6 +24,7 @@ import { db } from "../firebaseConfig";
 //import { getNodemailer } from "~/components/mailer";
 import { htmlemailstructure } from "~/components/email/email";
 import { Phonemodal } from "~/components/nav/phonemodal";
+import { SvgWaveTopTogether } from "~/components/ui/svgwavetoptogether";
 
 export const formSchema = v.object({
   fullname: v.string([v.minLength(2, "Zadejte vaše celé jméno")]),
@@ -211,7 +212,7 @@ export default component$(() => {
           Co pro vás mohu <span class={"text-primary"}>vytvořit</span>
         </span>
       </div>
-      <div class={"mb-56 px-5 md:mb-[24vw] md:px-12"}>
+      <div class={"mb-32 px-5 md:mb-[24vw] md:px-12"}>
         <div class={"md:hidden"}>
           <PostranaOne />
         </div>
@@ -220,13 +221,13 @@ export default component$(() => {
         </div>
       </div>
 
-      <div class={"pb-24"}>
-        <div class={"flex items-center justify-center"}>
-          <SvgWaveTop />
+      <div class={"pb-32"}>
+        <div class={"translate-y-2"}>
+          <SvgWaveTopTogether />
         </div>
         <div
           class={
-            "z-10 mt-[70px] w-full bg-accent px-5 pb-10 pt-5 md:mt-[20vw]  md:px-20 lg:px-28 xl:px-36"
+            "z-10 w-full bg-accent px-5 pb-10 pt-5 md:px-20 lg:px-28 xl:px-36"
           }
           id="projects"
         >
