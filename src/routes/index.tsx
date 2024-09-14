@@ -19,7 +19,7 @@ import { Collumn } from "~/components/ui/collumn";
 import * as v from "valibot";
 import { formAction$, reset, useForm, valiForm$ } from "@modular-forms/qwik";
 import { addDoc, collection } from "firebase/firestore";
-import { db } from "../firebaseConfig";
+import { db, analytics } from "../firebaseConfig";
 //import { getNodemailer } from "~/components/mailer";
 import { htmlemailstructure } from "~/components/email/email";
 import { Phonemodal } from "~/components/nav/phonemodal";
