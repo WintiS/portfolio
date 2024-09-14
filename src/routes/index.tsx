@@ -8,7 +8,6 @@ import {
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { HeaderButton } from "~/components/ui/headerbutton";
 import { SvgImage } from "~/components/ui/svgimage";
-import { SvgWaveTop } from "~/components/ui/svgwavetop";
 import { Project } from "~/components/projects/project";
 import { LuArrowRight, LuLoader2 } from "@qwikest/icons/lucide";
 import { SvgWaveBottom } from "~/components/ui/svgwavebottom";
