@@ -157,7 +157,17 @@ export default component$(() => {
       <div class={"flex justify-center py-10"}>
         <Wrapper title="Recenze Klientky">
           <div>
-            <p class={""}>Lorem ipsum.</p>
+            <p class={""}>
+              Spolupráci s Vítkem jsme odstartovali poté, co jsem hledala
+              někoho, kdo mi vytvoří jednoduchý web, ze kterého bude možnost si
+              objednat produkt. Od počátku byla spolupráce s Vítkem velmi
+              příjemná, vše mi vysvětlit tak, že jsem tomu i přes svoji
+              neznalost oboru dobře porozumněla a vždy ochotně odpovídal na moje
+              dotazy a svižně reagoval na další požadavky. Rozhodně mohu jeho
+              služby jen a jen doporučit.
+              <br></br>
+              -Hanka Zlatníková
+            </p>
           </div>
         </Wrapper>
       </div>
