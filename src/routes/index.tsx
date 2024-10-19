@@ -680,6 +680,15 @@ export const head: DocumentHead = {
       content:
         "Vítězslav Šíma je front-end vývojář, který nabízí kompletní služby webového vývoje včetně firemních webových stránek, portfolií, webových aplikací a e-commerce stránek.",
     },
+    {
+      name: "keywords",
+      content:
+        "web agency, front end, html, css, webové stránky, webové aplikace, návrh webu, návrh webových stránek, tvorba webové stránky, vytvorit web, profesionální webové stránky, tvorba webových stranek, vytvořit web, vytvořit webové stránky, webová aplikace, webové stránky, online portfolio, web, firemní webové stránky, webove stránky, web zdarma, design webových stránek, tvorba webových aplikací, tvorba webových stránek, online tvorba webove stranky, vytvorit webove stranky, webové stránky, eshop",
+    },
+    {
+      name: "author",
+      content: "Vítězslav Šíma",
+    },
   ],
 };
 
