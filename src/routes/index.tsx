@@ -673,12 +673,12 @@ export default component$(() => {
 });
 
 export const head: DocumentHead = {
-  title: "Vítězslav Šíma | Portfolio",
+  title: "Vítězslav Šíma | Vývoj webů",
   meta: [
     {
       name: "description",
       content:
-        "Vítězslav Šíma je front-end vývojář, který nabízí kompletní služby webového vývoje včetně firemních webových stránek, portfolií, webových aplikací a e-commerce stránek.",
+        "Nabízím kompletní služby webového vývoje včetně firemních webových stránek, portfolií, webových aplikací a e-commerce stránek.",
     },
     {
       name: "keywords",
