@@ -156,6 +156,7 @@ export default component$(() => {
         <div class={"mb-16 flex w-3/4 justify-between pt-20 md:pt-32 xl:mb-32"}>
           <div class={"md:pt-6 "}>
             <h1 class={"mb-12 text-3xl md:mb-14"}>
+              <p class={"text-lg font-light"}>wintis.cz</p>
               <p
                 class={
                   "inline-block bg-gradient-to-r from-primary to-[#FF0094] bg-clip-text pb-4 pt-3 font-display text-6xl text-transparent md:text-7xl"

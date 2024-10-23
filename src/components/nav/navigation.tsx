@@ -13,7 +13,12 @@ export const Navigation = component$((props: Props) => {
   return (
     <div class={" flex h-20 items-end justify-center bg-background  md:pt-4"}>
       <div class={"flex w-3/4 items-center justify-between md:w-2/3"}>
-        <Link href="/" class={"transition-transform hover:scale-110"}>
+        <Link
+          href="/"
+          class={
+            "flex flex-col justify-center transition-transform hover:scale-110"
+          }
+        >
           <Image
             src="/wintispng.png"
             layout="fixed"
