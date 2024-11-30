@@ -17,7 +17,7 @@ export const HeaderButton = component$(() => {
       <a
         href="#form"
         class={
-          "inline-block  items-center gap-1 rounded-[5px] border-2 border-white bg-transparent px-5 py-3  transition-colors hover:border-primary hover:bg-primary"
+          "inline-block items-center  gap-1 rounded-[5px] border-2 border-white bg-transparent px-5 py-3 transition-colors  hover:border-primary hover:bg-primary xl:ml-3"
         }
       >
         <p class={"flex items-center gap-2"}>
